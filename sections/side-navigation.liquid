@@ -1,10 +1,9 @@
 
-
+hello
 {% schema %}
 {
   "name": "Navigation",
   "class": "section-navigation",
-  "max_blocks": 3,
   "settings": [
     {
       "type": "link_list",
@@ -30,11 +29,11 @@
         }
       ],
       "default": "on-scroll-up",
-      "label": "t:sections.header.settings.sticky_header_type.label"
+      "label": "Sticky Navigation"
     },
     {
       "type": "header",
-      "content": "t:sections.all.spacing"
+      "content": "Link Bottom Margin"
     },
     {
       "type": "range",
@@ -45,30 +44,6 @@
       "unit": "px",
       "label": "t:sections.header.settings.margin_bottom.label",
       "default": 0
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 36,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 20
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 36,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 20
     }
   ],
   "blocks": [
