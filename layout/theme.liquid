@@ -450,7 +450,8 @@
     {%- if settings.cart_type == 'drawer' -%}
       {%- render 'cart-drawer' -%}
     {%- endif -%}
-
+    
+    {% sections 'header-group' %}
 
     <main
       id="MainContent"
@@ -459,6 +460,7 @@
       tabindex="-1">
       {{ content_for_layout }}
     </main>
+
 
 
     <ul hidden>
