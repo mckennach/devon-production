@@ -4,14 +4,10 @@
       "type": "video",
       "settings": {
         "heading": "Video",
-        "heading_size": "h1",
+        "video_label": "<p>Artisanal home objects      thoughtfully designed       by Devon Liedtke    to                          move  within your space,              and along with                  you.<\/p>",
         "enable_video_looping": false,
         "video_url": "https:\/\/www.youtube.com\/watch?v=NpEaa2P7qZI",
-        "description": "",
-        "full_width": true,
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "description": ""
       }
     }
   },
