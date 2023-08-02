@@ -1,5 +1,5 @@
-{{ 'video-section.css' | asset_url | stylesheet_tag }}
-{{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+{% comment %} {{ 'video-section.css' | asset_url | stylesheet_tag }}
+{{ 'component-deferred-media.css' | asset_url | stylesheet_tag }} {% endcomment %}
 
 
 {%- liquid
@@ -19,6 +19,8 @@
 {%- capture sizes -%}
   100vw
 {%- endcapture -%}
+
+<script></script>
 
 <div class="gradient">
   <div class="video-section isolate ">
@@ -103,6 +105,7 @@
               allowfullscreen
               title="{{ section.settings.description | escape }}"></iframe>
           {%- endif -%}
+          hello
         {%- else -%}
           {{
              section.settings.video

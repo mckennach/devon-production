@@ -890,3 +890,10 @@ html.no-js .no-js-hidden {
 .side-navigation__navigation {
   position: fixed;
 }
+
+.video-section__media {
+  background-color: red;
+  --ratio-percent: 56.25%;
+  position: relative;
+  padding-bottom: calc(var(--ratio-percent) - var(--media-border-width));
+}
