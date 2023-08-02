@@ -1,5 +1,15 @@
 {
   "sections": {
+    "89a89aff-387f-481a-88df-b9d4e059a70f": {
+      "type": "video",
+      "settings": {
+        "heading": "Video",
+        "video_label": "<p>Artisanal home objects      thoughtfully designed       by Devon Liedtke    to                          move  within your space,              and along with                  you.<\/p>",
+        "enable_video_looping": false,
+        "video_url": "https:\/\/www.youtube.com\/watch?v=NpEaa2P7qZI",
+        "description": ""
+      }
+    },
     "7d4e0139-da51-4404-b40d-dd4e182e3b00": {
       "type": "featured-collection",
       "settings": {
@@ -11,6 +21,7 @@
     }
   },
   "order": [
+    "89a89aff-387f-481a-88df-b9d4e059a70f",
     "7d4e0139-da51-4404-b40d-dd4e182e3b00"
   ]
 }
