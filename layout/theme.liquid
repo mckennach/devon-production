@@ -54,7 +54,6 @@
     %}
 
 
-    {{ 'app.css' | asset_url | stylesheet_tag }}
     {% comment %} {{ 'base.css' | asset_url | stylesheet_tag }} {% endcomment %}
     {{ 'style.css' | asset_url | stylesheet_tag }}
 
@@ -67,6 +66,7 @@
         crossorigin>
     {%- endunless -%}
     {%- unless settings.type_header_font.system? -%}
+
       <link
         rel="preload"
         as="font"
