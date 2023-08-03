@@ -1257,10 +1257,6 @@ Text
 /* --------------------------------------------------------------------------
 Goodies
 ----------------------------------------------------------------------------- */
-/* ========================================
-  Base
-  Note: Difine your base style
-======================================== */
 :root {
   font-family: "Unica 77 LL", -apple-system, blinkmacsystemfont, "Segoe UI", "Roboto", "Helvetica Neue", arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-weight: normal;
@@ -1297,8 +1293,13 @@ Goodies
   --alpha-button-border: 1;
   --alpha-link: 0.85;
   --alpha-badge-border: 0.1;
+  --play-btn-background: rgba(255, 255, 255, .23);
 }
 
+/* ========================================
+  Base
+  Note: Difine your base style
+======================================== */
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
@@ -5861,7 +5862,7 @@ Responsive Videos
 }
 
 .deferred-media__poster-button {
-  background-color: rgb(var(--color-background));
+  background-color: var(--play-btn-background);
   border: 0.1rem solid rgba(var(--color-foreground), 0.1);
   border-radius: 50%;
   color: rgb(var(--color-foreground));
