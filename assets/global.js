@@ -6,6 +6,8 @@ function getFocusableElements(container) {
   );
 }
 
+console.log('hello!!');
+
 document.querySelectorAll('[id^="Details-"] summary').forEach((summary) => {
   summary.setAttribute('role', 'button');
   summary.setAttribute(
@@ -673,12 +675,14 @@ class DeferredMedia extends HTMLElement {
   constructor() {
     super();
     const poster = this.querySelector('[id^="Deferred-Poster-"]');
+    console.log(this);
     if (!poster) return;
     poster.addEventListener('click', this.loadContent.bind(this));
   }
 
   loadContent(focus = true) {
     window.pauseAllMedia();
+    console.log(this);
     if (!this.getAttribute('loaded')) {
       const content = document.createElement('div');
       content.appendChild(
