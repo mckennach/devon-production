@@ -3,13 +3,12 @@
     "89a89aff-387f-481a-88df-b9d4e059a70f": {
       "type": "video",
       "settings": {
-        "heading": "Video",
         "video_label": "<p>Artisanal home objects       <strong> <\/strong>thoughtfully designed       by Devon Liedtke     to         move  within your space,      and along with               you.<\/p><p><em>Our story here ipsum dolor amet set dolor lorem ipsum amen Title lorem ipsum dolor amet set dolor lorem ipsum amen.<\/em><\/p><p><em>Our story here ipsum dolor amet set dolor lorem ipsum amen Title lorem ipsum dolor amet set dolor lorem ipsum amen.<\/em><\/p>",
+        "link": "shopify:\/\/collections\/frontpage",
         "enable_video_looping": false,
         "video_url": "https:\/\/youtu.be\/NpEaa2P7qZI",
         "cover_image": "shopify:\/\/shop_images\/Rectangle_218.png",
-        "description": "Shop the Collection   >",
-        "link": "shopify:\/\/collections\/frontpage"
+        "description": ""
       }
     },
     "7d4e0139-da51-4404-b40d-dd4e182e3b00": {
