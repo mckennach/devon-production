@@ -1117,6 +1117,13 @@ button.swiper-pagination-bullet {
 *
 * Map helper for the $type map in _includes/_variables.
 */
+/* ========================================
+  Get Line Hight Function
+  @param {Number} $font-size - Font size with px
+  @param {Number} $line-feed - Line feed with no-unit
+  @return {Number} $line-height - Line hight
+  ex: get-line-height(16); -> 1.5
+======================================== */
 /* --------------------------------------------------------------------------
 Colors
 ----------------------------------------------------------------------------- */
@@ -1192,6 +1199,23 @@ Font Sizes
 * Visually hides text while maintaining screen reader support.
 */
 /**
+* List Zero
+*
+* Removing styles from a list.
+*/
+/**
+* Breakpoint
+*
+* Supports applying breakpoint specific styles.
+* References the values set in the $breakpoints map in _includes/_variables.
+*/
+/**
+* Layer
+*
+* Setting the z-index value for an element.
+* Defaults to the default value set in the $layers map in _includes/_variables.
+*/
+/**
 * Container
 *
 * Creates a centered element with the provided max-width.
@@ -1221,42 +1245,11 @@ Font Sizes
 * References values from the $type map in _includes/_variables.
 */
 /**
-* Layer
-*
-* Setting the z-index value for an element.
-* Defaults to the default value set in the $layers map in _includes/_variables.
-*/
-/**
-* List Zero
-*
-* Removing styles from a list.
-*/
-/**
-* Breakpoint
-*
-* Supports applying breakpoint specific styles.
-* References the values set in the $breakpoints map in _includes/_variables.
-*/
-/**
 * Transition
 *
 * Helper to support common duration and timing functions.
 * Defaults to the font-size value set in the $base map in _includes/_variables.
 */
-/* --------------------------------------------------------------------------
-Flex
------------------------------------------------------------------------------ */
-/* 👋🏻  Add blocks of reusable styles here (optional). */
-/* --------------------------------------------------------------------------
-Responsive Mixins
------------------------------------------------------------------------------ */
-/* Adjust breakpoints below if needed  */
-/* --------------------------------------------------------------------------
-Text
------------------------------------------------------------------------------ */
-/* --------------------------------------------------------------------------
-Goodies
------------------------------------------------------------------------------ */
 :root {
   font-family: "Unica 77 LL", -apple-system, blinkmacsystemfont, "Segoe UI", "Roboto", "Helvetica Neue", arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-weight: normal;
@@ -2145,29 +2138,9 @@ a:not([href]) {
   --animation-fade-in: fadeIn var(--duration-extra-long) var(--ease-out-slow);
 }
 
-.underlined-link,
-.customer a,
-.inline-richtext a {
-  text-underline-offset: 0.3rem;
-  text-decoration-thickness: 0.1rem;
-  transition: text-decoration-thickness ease 100ms;
-}
-
-.underlined-link,
-.customer a {
-  color: rgba(var(--color-link), var(--alpha-link));
-}
-
 .inline-richtext a,
 .rte.inline-richtext a {
   color: currentColor;
-}
-
-.underlined-link:hover,
-.customer a:hover,
-.inline-richtext a:hover {
-  color: rgb(var(--color-link));
-  text-decoration-thickness: 0.2rem;
 }
 
 .icon-arrow {
@@ -5017,6 +4990,44 @@ div.imgSrc50.loaded.filtered {
   min-height: 550px;
 }
 
+.underlined-link {
+  display: block;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 0.8125rem;
+  line-height: 0.9375rem;
+  letter-spacing: 25;
+  font-family: "Nitti Basic", " sans-serif";
+  font-style: normal;
+  font-weight: 400;
+  text-transform: none;
+  font-weight: 300;
+  text-transform: normal;
+}
+.underlined-link::before {
+  background: #000;
+  /* adjust this to move up and down. you may have to adjust the line height of the paragraph if you move it down a lot. */
+  bottom: -4px;
+  content: "";
+  height: 1px;
+  left: 0;
+  /****** 
+  optional values below 
+  ******/
+  /* center - (optional) use with adjusting width   */
+  margin: 0 auto;
+  position: absolute;
+  /* optional animation */
+  transition: all 0.5s ease-in-out;
+  width: 100%;
+}
+.underlined-link:after {
+  content: ">";
+  position: relative;
+  margin-left: 1.25rem;
+}
+
 /* --------------------------------------------------------------------------
 Sizing - Gutters
 ----------------------------------------------------------------------------- */
@@ -5214,9 +5225,11 @@ input, textarea {
   outline: none;
   position: relative;
   resize: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  letter-spacing: 0px;
+  letter-spacing: 0;
   font-family: "Unica 77 LL", "sans-serif";
   font-style: normal;
   font-weight: 400;
@@ -5243,7 +5256,7 @@ Validation
 .input-container {
   margin-bottom: 1.5rem;
   position: relative;
-  display: inline;
+  display: block;
   position: relative;
 }
 .input-container::before {
@@ -5260,7 +5273,7 @@ Validation
   margin: 0 auto;
   position: absolute;
   /* optional animation */
-  transition: 0.5s;
+  transition: all 0.5s ease-in-out;
   width: 100%;
 }
 
@@ -5337,9 +5350,8 @@ Validation
 
 .debug__container {
   margin: 0 auto;
-  max-width: 90%;
   position: relative;
-  width: 85rem;
+  width: clamp(1.875rem, 85rem, 90%);
   z-index: 1;
 }
 @media (max-width: 480px) {
@@ -5411,9 +5423,11 @@ button {
   text-align: center;
   text-transform: uppercase;
   transition: all 0.1s ease-in-out;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-size: 0.875rem;
   line-height: 1.875rem;
-  letter-spacing: 2px;
+  letter-spacing: 2;
   font-family: "Mark Medium", "sans-serif";
   font-style: normal;
   font-weight: 400;
@@ -5524,9 +5538,6 @@ Responsive Videos
   color: #000;
   height: 39px;
   margin-right: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .component--illustration {
@@ -5589,9 +5600,11 @@ Responsive Videos
   z-index: 2;
 }
 .component--filter__item-btn {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-size: 0.9375rem;
   line-height: 0.875rem;
-  letter-spacing: 2px;
+  letter-spacing: 2;
   font-family: "Unica 77 LL", "sans-serif";
   font-style: normal;
   font-weight: 400;
@@ -5611,13 +5624,18 @@ Responsive Videos
   padding: 0;
 }
 .component--filter__item {
-  flex: 1 1 0;
   max-width: 100%;
   align-items: baseline;
   display: flex;
   flex-direction: column;
   margin: 0 0.9375rem;
   max-width: 14.625rem;
+}
+@media (min-width: 768px) {
+  .component--filter__item {
+    flex: 1 1 0;
+    max-width: 100%;
+  }
 }
 @media (max-width: 768px) {
   .component--filter__item {
@@ -5657,7 +5675,7 @@ Responsive Videos
   margin: 0 auto;
   position: absolute;
   /* optional animation */
-  transition: 0.5s;
+  transition: all 0.5s ease-in-out;
   width: 100%;
 }
 .component--filter__select-opener::after {
@@ -5666,9 +5684,11 @@ Responsive Videos
   right: 0;
 }
 .component--filter__select-opener span {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-size: 1.125rem;
   line-height: 1.75rem;
-  letter-spacing: 1px;
+  letter-spacing: 1;
   font-family: "Unica 77 LL", "sans-serif";
   font-style: normal;
   font-weight: 400;
@@ -5706,9 +5726,11 @@ Responsive Videos
 }
 
 .component--newsletter__title {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-size: 2.1875rem;
   line-height: -0.9375rem;
-  letter-spacing: 1.625rempx;
+  letter-spacing: 1.625rem;
   font-family: "Canela Italic", "sans-serif";
   font-style: normal;
   font-weight: 400;
@@ -5718,9 +5740,11 @@ Responsive Videos
   color: #000;
 }
 .component--newsletter__submit {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-size: 0.9375rem;
   line-height: 0.875rem;
-  letter-spacing: 2px;
+  letter-spacing: 2;
   font-family: "Unica 77 LL", "sans-serif";
   font-style: normal;
   font-weight: 400;
@@ -5745,9 +5769,11 @@ Responsive Videos
   text-align: center;
 }
 .component--contact__title {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-size: 0.9375rem;
   line-height: 0.875rem;
-  letter-spacing: 2px;
+  letter-spacing: 2;
   font-family: "Unica 77 LL", "sans-serif";
   font-style: normal;
   font-weight: 400;
@@ -5757,9 +5783,11 @@ Responsive Videos
   color: black;
 }
 .component--contact__subtitle {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-size: 2.5rem;
   line-height: 1.1;
-  letter-spacing: 0px;
+  letter-spacing: 0;
   font-family: "Unica 77 LL", "sans-serif";
   font-style: normal;
   font-weight: 400;
@@ -5768,9 +5796,11 @@ Responsive Videos
   text-transform: normal;
 }
 .component--contact__desc p, .component--contact__desc ul li, .component--contact__desc ol li, .component--contact__desc a {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-size: 1rem;
   line-height: 1.875rem;
-  letter-spacing: 0px;
+  letter-spacing: 0;
   font-family: "Unica 77 LL", "sans-serif";
   font-style: normal;
   font-weight: 400;
@@ -5784,11 +5814,97 @@ Responsive Videos
   }
 }
 
+.price > * {
+  display: inline-block;
+  vertical-align: top;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 0.8125rem;
+  line-height: 0.9375rem;
+  letter-spacing: 25;
+  font-family: "Nitti Basic", " sans-serif";
+  font-style: normal;
+  font-weight: 400;
+  text-transform: none;
+  font-weight: 300;
+  text-transform: normal;
+  font-size: 0.9375rem;
+  line-height: 1.125rem;
+}
+
+.price.price--unavailable {
+  visibility: hidden;
+}
+
+.price--end {
+  text-align: right;
+}
+
+.price .price-item {
+  display: inline-block;
+  margin: 0 1rem 0 0;
+}
+
+.price__regular .price-item--regular {
+  margin-right: 0;
+}
+
+.price:not(.price--show-badge) .price-item--last:last-of-type {
+  margin: 0;
+}
+
+@media screen and (min-width: 750px) {
+  .price {
+    margin-bottom: 0;
+  }
+}
+.price--sold-out .price__availability,
+.price__regular {
+  display: block;
+}
+
+.price__sale,
+.price__availability,
+.price .price__badge-sale,
+.price .price__badge-sold-out,
+.price--on-sale .price__regular,
+.price--on-sale .price__availability {
+  display: none;
+}
+
+.price--sold-out .price__badge-sold-out,
+.price--on-sale .price__badge-sale {
+  display: inline-block;
+}
+
+.price--on-sale .price__sale {
+  display: initial;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.price--center {
+  display: initial;
+  justify-content: center;
+}
+
+.price--on-sale .price-item--regular {
+  text-decoration: line-through;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.unit-price {
+  display: block;
+  margin-top: 0.2rem;
+  text-transform: uppercase;
+  color: rgba(var(--color-foreground), 0.7);
+}
+
 /* --------------------------------------------------------------------------
   Sections
 ----------------------------------------------------------------------------- */
 .side-navigation__navigation {
-  position: fixed;
+  position: absolute;
 }
 .side-navigation__menu {
   list-style-type: none;
@@ -5796,6 +5912,9 @@ Responsive Videos
   padding: 0;
 }
 
+.deferred-media {
+  overflow: hidden;
+}
 .deferred-media__poster {
   display: block;
   background-color: transparent;
@@ -5808,59 +5927,32 @@ Responsive Videos
   overflow: hidden;
   border-radius: calc(var(--border-radius) - var(--border-width));
 }
-
-.media > .deferred-media__poster {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .deferred-media__poster img {
   width: auto;
   max-width: 100%;
   height: 100%;
 }
-
-.deferred-media {
-  overflow: hidden;
-}
-
-.deferred-media:not([loaded]) template {
-  z-index: -1;
-}
-
-.deferred-media[loaded] > .deferred-media__poster {
-  display: none;
-}
-
 .deferred-media__poster:focus-visible {
   outline: none;
   box-shadow: 0 0 0 var(--media-border-width) rgba(var(--color-foreground), var(--media-border-opacity)), 0 0 0 calc(var(--media-border-width) + 0.3rem) rgb(var(--color-background)), 0 0 0 calc(var(--media-border-width) + 0.5rem) rgba(var(--color-foreground), 0.5);
   border-radius: calc(var(--media-radius) - var(--media-border-width));
 }
-
 .deferred-media__poster:focus {
   outline: none;
   box-shadow: 0 0 0 var(--media-border-width) rgba(var(--color-foreground), var(--media-border-opacity)), 0 0 0 calc(var(--media-border-width) + 0.3rem) rgb(var(--color-background)), 0 0 0 calc(var(--media-border-width) + 0.5rem) rgba(var(--color-foreground), 0.5);
   border-radius: calc(var(--media-radius) - var(--media-border-width));
 }
-
-.global-media-settings--full-width .deferred-media__poster,
-.global-media-settings--full-width .deferred-media__poster:is(:focus, :focus-visible) {
-  border-radius: 0;
+.deferred-media__poster:focus:not(:focus-visible) {
+  outline: 0;
+  box-shadow: none;
 }
-
-/* outline styling for Windows High Contrast Mode */
-@media (forced-colors: active) {
-  .deferred-media__poster:focus {
-    outline: transparent solid 1px;
-  }
+.deferred-media:not([loaded]) template {
+  z-index: -1;
 }
 .deferred-media__poster:focus:not(:focus-visible) {
   outline: 0;
   box-shadow: none;
 }
-
 .deferred-media__poster-button {
   background-color: var(--play-btn-background);
   border: 0.1rem solid rgba(var(--color-foreground), 0.1);
@@ -5879,6 +5971,27 @@ Responsive Videos
   z-index: 1;
 }
 
+.media > .deferred-media__poster {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deferred-media[loaded] > .deferred-media__poster {
+  display: none;
+}
+
+.global-media-settings--full-width .deferred-media__poster,
+.global-media-settings--full-width .deferred-media__poster:is(:focus, :focus-visible) {
+  border-radius: 0;
+}
+
+/* outline styling for Windows High Contrast Mode */
+@media (forced-colors: active) {
+  .deferred-media__poster:focus {
+    outline: transparent solid 1px;
+  }
+}
 .deferred-media__poster-button:hover {
   transform: translate(-50%, -50%) scale(1.1);
 }
@@ -5939,4 +6052,120 @@ Responsive Videos
 .video-section__media.media-fit-cover video {
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.video-section {
+  padding: 6.25rem 0;
+}
+.video-section__txt-container {
+  max-width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  flex-grow: 0;
+  flex-shrink: 0;
+  justify-content: space-between;
+}
+.video-section__label {
+  flex: 1;
+  display: flex;
+  flex-flow: row nowrap;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.video-section__label p {
+  flex: 0 0 auto;
+  max-width: 100%;
+  width: auto;
+}
+.video-section__label p em {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 0.8125rem;
+  line-height: 0.9375rem;
+  letter-spacing: 25;
+  font-family: "Nitti Basic", " sans-serif";
+  font-style: normal;
+  font-weight: 400;
+  text-transform: none;
+  font-weight: 300;
+  text-transform: normal;
+}
+
+.featured-collection {
+  border-top: 1px solid;
+  padding-top: 1.875rem;
+}
+.featured-collection__heading {
+  margin-bottom: 8.75rem;
+}
+.featured-collection__title {
+  font-size: 1.25rem;
+  text-transform: uppercase;
+}
+.featured-collection__collection-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row wrap;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.featured-collection__item {
+  margin-right: 1.25rem;
+}
+.featured-collection__item:nth-child(2), .featured-collection__item:nth-child(3) {
+  max-width: 26.25rem;
+}
+.featured-collection__img-container {
+  margin-bottom: 0.9375rem;
+}
+.featured-collection__txt-container {
+  display: block;
+  position: relative;
+}
+.featured-collection__txt-container::before {
+  background: #000;
+  /* adjust this to move up and down. you may have to adjust the line height of the paragraph if you move it down a lot. */
+  bottom: -4px;
+  content: "";
+  height: 1px;
+  left: 0;
+  /****** 
+  optional values below 
+  ******/
+  /* center - (optional) use with adjusting width   */
+  margin: 0 auto;
+  position: absolute;
+  /* optional animation */
+  transition: all 0.5s ease-in-out;
+  width: 0;
+}
+.featured-collection__txt-inner-container {
+  display: flex;
+  flex-flow: row nowrap;
+  flex-grow: 0;
+  flex-shrink: 0;
+  justify-content: space-between;
+}
+.featured-collection__item:hover .featured-collection__txt-container {
+  display: block;
+  position: relative;
+}
+.featured-collection__item:hover .featured-collection__txt-container::before {
+  background: #000;
+  /* adjust this to move up and down. you may have to adjust the line height of the paragraph if you move it down a lot. */
+  bottom: -4px;
+  content: "";
+  height: 1px;
+  left: 0;
+  /****** 
+  optional values below 
+  ******/
+  /* center - (optional) use with adjusting width   */
+  margin: 0 auto;
+  position: absolute;
+  /* optional animation */
+  transition: all 0.5s ease-in-out;
+  width: 100%;
 }

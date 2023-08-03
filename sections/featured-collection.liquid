@@ -2,32 +2,38 @@
 {%- assign collection_length = section.settings.collection.products | size -%}
 
 {%- if collection_length > 0 -%}
-  <div
-    class="section--featured-collection">
-    <div
-      class="section--featured-collection__container page-width">
+  <div class="featured-collection">
+    <div class="featured-collection__container container">
+
       {%- if section.settings.title -%}
-        <h2>{{ section.settings.title }}</h2>
+        <div class="featured-collection__heading">
+          <h2 class="featured-collection__title">{{ section.settings.title }}</h2>
+        </div>
       {%- endif -%}
 
 
-      <div>
-        <ul>
+      <div class="featured-collection__collection">
+        <ul class="featured-collection__collection-list">
           {%- for product in products limit: section.settings.products_to_show -%}
             <li
               id="product-{{ section.id }}-{{ forloop.index }}"
-              class="grid__item"
+              class="featured-collection__item"
               data-cascade
               style="--animation-order: {{ forloop.index }};">
-              {% include 'responsive-image' with image: product.featured_image, image_class: "css-class", wrapper_class: "wrapper-css-class", max_width: 715, max_height: 550 %}
-              <div>
-                <div>
-                  {{ product.title }}
+              <a href="{{ product.url }}" data-id="{{ product.id }}">
+                {% include 'responsive-image' with image: product.featured_image, image_class: "featured-collection__img", wrapper_class: "featured-collection__img-container", max_width: 715, max_height: 550 %}
+                <div class="featured-collection__txt-container">
+                  <div class="featured-collection__txt-inner-container">
+                    <div class="featured-collection__product-title">
+                      {{ product.title }}
+                    </div>
+                    <div class="featured-collection__price-container">
+                      {% render 'price', product: product, price_class: '' %}
+                    </div>
+                  </div>
+
                 </div>
-                <div>
-                  {% render 'price', product: product, price_class: '' %}
-                </div>
-              </div>
+              </a>
             </li>
             {% comment %} {% render 'card-product'
               , card_product: product,

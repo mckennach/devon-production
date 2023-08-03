@@ -4,6 +4,7 @@
   assign alt = 'sections.video.load_video' | t: description: video_alt | escape
   assign poster = section.settings.video.preview_image | default: section.settings.cover_image
   assign video_label = section.settings.video_label
+
   assign link = section.settings.link
   assign link_label = section.settings.link_label | default: 'Learn More'
   if section.settings.video != null
@@ -20,7 +21,7 @@
 
 <div class="container-md">
   <div class="video-section isolate ">
-
+    {{ autoplay }}
     <noscript>
       <div
         class="video-section__media"
@@ -79,17 +80,22 @@
             if section.settings.enable_video_looping
               assign loop = '&loop=1&playlist=' | append: video_id
             endif
+            if section.settings.enable_video_autoplay
+              assign autoplay = 'autoplay=1'
+            else
+              assign autoplay = 'autoplay=0'
+            endif
           -%}
           {%- if section.settings.video_url.type == 'youtube' -%}
             <iframe
-              src="https://www.youtube.com/embed/{{ video_id }}?enablejsapi=1&autoplay=1{{ loop }}"
+              src="https://www.youtube.com/embed/{{ video_id }}?enablejsapi=1&{{ autoplay }}{{ loop }}"
               class="js-youtube"
               allow="autoplay; encrypted-media"
               allowfullscreen
               title="{{ section.settings.description | escape }}"></iframe>
           {%- else -%}
             <iframe
-              src="https://player.vimeo.com/video/{{ video_id }}?autoplay=1{{ loop }}"
+              src="https://player.vimeo.com/video/{{ video_id }}?{{ autoplay }}{{ loop }}"
               class="js-vimeo"
               allow="autoplay; encrypted-media"
               allowfullscreen
@@ -100,7 +106,7 @@
              section.settings.video
            | video_tag:
            image_size: '1100x',
-           autoplay: true,
+           autoplay: section.settings.enable_video_autoplay,
            loop: section.settings.enable_video_looping,
            controls: true,
            muted: false }}
@@ -108,7 +114,7 @@
       </template>
     </deferred-media>
     {%- if video_label or link -%}
-      <div>
+      <div class="video-section__txt-container">
         {%- if video_label -%}
           <div class="video-section__label">
             {{ video_label }}
@@ -116,11 +122,13 @@
         {%- endif -%}
         {% if link %}
           <div class="video-section__link">
-            <a href="{{ link }}" rel="">{{ link_label | escape }}</a>
+            <a
+              href="{{ link }}"
+              class="underlined-link"
+              rel="">{{ link_label | escape }}</a>
           </div>
         {% endif %}
       </div>
-
     {%- endif -%}
 
   </div>
