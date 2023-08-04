@@ -654,6 +654,7 @@ class ModalDialog extends HTMLElement {
     window.pauseAllMedia();
   }
 }
+
 customElements.define('modal-dialog', ModalDialog);
 
 class ModalOpener extends HTMLElement {
@@ -669,6 +670,7 @@ class ModalOpener extends HTMLElement {
     });
   }
 }
+
 customElements.define('modal-opener', ModalOpener);
 
 class DeferredMedia extends HTMLElement {
