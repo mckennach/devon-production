@@ -116,12 +116,12 @@
     {%- if video_label or link -%}
       <div class="video-section__txt-container">
         {%- if video_label -%}
-          <div class="video-section__label">
+          <div class="video-section__label {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
             {{ video_label }}
           </div>
         {%- endif -%}
         {% if link %}
-          <div class="video-section__link">
+          <div class="video-section__link {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
             <a
               href="{{ link }}"
               class="underlined-link"

@@ -2019,7 +2019,7 @@ html.no-js .no-js-hidden {
 }
 
 .color-foreground {
-  color: var(--color-foreground);
+  color: rgb(var(--color-foreground));
 }
 
 table:not([class]) {
@@ -2027,14 +2027,14 @@ table:not([class]) {
   border-collapse: collapse;
   font-size: 1.4rem;
   border-style: hidden;
-  box-shadow: 0 0 0 0.1rem rgba(var(--color-foreground), 0.2);
+  box-shadow: 0 0 0 0.1rem rgba(var(--color-foreground), 1);
   /* draws the table border  */
 }
 
 table:not([class]) td,
 table:not([class]) th {
   padding: 1em;
-  border: 0.1rem solid rgba(var(--color-foreground), 0.2);
+  border: 0.1rem solid rgba(var(--color-foreground), 1);
 }
 
 @media screen and (max-width: 749px) {
@@ -4407,7 +4407,7 @@ details-disclosure > details {
 }
 
 .gradient {
-  background: var(--color-background);
+  background: rgb(var(--color-background));
   background: var(--gradient-background);
   background-attachment: fixed;
 }
@@ -6188,4 +6188,16 @@ Responsive Videos
   /* optional animation */
   transition: all 0.5s ease-in-out;
   width: 100%;
+}
+
+.featured-blog {
+  padding: 5.625rem 0;
+}
+.featured-blog__title-container {
+  border-bottom: 1px solid rgb(var(--color-foreground));
+  padding-bottom: 0.9375rem;
+  margin-bottom: 1.25rem;
+}
+.featured-blog__tag-container {
+  text-align: right;
 }

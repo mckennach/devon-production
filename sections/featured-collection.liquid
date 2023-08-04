@@ -7,7 +7,7 @@
 
       {%- if section.settings.title -%}
         <div class="featured-collection__heading">
-          <h2 class="featured-collection__title">{{ section.settings.title }}</h2>
+          <h2 class="featured-collection__title {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" data-cascade>{{ section.settings.title }}</h2>
         </div>
       {%- endif -%}
 
@@ -17,7 +17,7 @@
           {%- for product in products limit: section.settings.products_to_show -%}
             <li
               id="product-{{ section.id }}-{{ forloop.index }}"
-              class="featured-collection__item"
+              class="featured-collection__item {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
               data-cascade
               style="--animation-order: {{ forloop.index }};">
               <a href="{{ product.url }}" data-id="{{ product.id }}">
