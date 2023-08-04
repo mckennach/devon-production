@@ -1,9 +1,155 @@
+{%- liquid
+  assign posts_displayed = section.settings.blog.articles_count
+  
+  if section.settings.post_limit <= section.settings.blog.articles_count or section.settings.post_limit <= 4
+    assign posts_exceed_limit = true
+    assign posts_displayed = section.settings.post_limit
+  endif
+-%}
+
+<div class="featured-blog color-{{ section.settings.color_scheme }} gradient{% if section.settings.heading == blank %} no-heading{% endif %}">
+  <div class="featured-blog__container" container>
+    {%- unless section.settings.heading == blank -%}
+      <div class="title-wrapper-with-link{% if posts_displayed > 2 %} title-wrapper--self-padded-tablet-down{% else %} title-wrapper--self-padded-mobile{% endif %} title-wrapper--no-top-margin">
+        <h2
+          id="SectionHeading-{{ section.id }}"
+          class="blog__title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          {% if settings.animations_reveal_on_scroll %}
+          data-cascade
+          {% endif %}>
+          {{ section.settings.heading }}
+        </h2>
+
+        {%- if section.settings.blog != blank
+ and section.settings.show_view_all
+ and section.settings.post_limit < section.settings.blog.articles_count
+ -%}
+          <a href="{{ section.settings.blog.url }}" class="link underlined-link large-up-hide{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+            {{ 'sections.featured_blog.view_all' | t }}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endunless -%}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "t:sections.featured-blog.name",
+    "tag": "section",
+    "disabled_on": {
+      "groups": ["header", "footer"]
+    },
+    "settings": [
+      {
+        "type": "inline_richtext",
+        "id": "heading",
+        "default": "THE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EDIT",
+        "label": "Title",
+        "info": "Use &nbsp; for spaces."
+      },
+      {
+        "type": "inline_richtext",
+        "id": "heading_tag",
+        "default": "Inspired by&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&&nbsp;&nbsp;&nbsp;Living With&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Intentionally",
+        "label": "Tag",
+        "info": "Use &nbsp; for spaces."
+      },
+      {
+        "type": "blog",
+        "id": "blog",
+        "label": "t:sections.featured-blog.settings.blog.label",
+        "info": "Use blocks to pick specific articles"
+      },
+      {
+        "type": "range",
+        "id": "post_limit",
+        "min": 2,
+        "max": 4,
+        "step": 1,
+        "default": 3,
+        "label": "t:sections.featured-blog.settings.post_limit.label"
+      }, {
+        "type": "range",
+        "id": "columns_desktop",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "default": 3,
+        "label": "t:sections.featured-blog.settings.columns_desktop.label"
+      }, {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "t:sections.all.colors.label",
+        "info": "t:sections.all.colors.has_cards_info",
+        "default": "background-1"
+      }, {
+        "type": "checkbox",
+        "id": "show_date",
+        "default": true,
+        "label": "t:sections.featured-blog.settings.show_date.label"
+      }, {
+        "type": "checkbox",
+        "id": "show_author",
+        "default": false,
+        "label": "t:sections.featured-blog.settings.show_author.label"
+      }, {
+        "type": "checkbox",
+        "id": "show_view_all",
+        "default": true,
+        "label": "t:sections.featured-blog.settings.show_view_all.label"
+      }, {
+        "type": "header",
+        "content": "t:sections.all.padding.section_padding_heading"
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 36
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 36
+      }
+    ],
+    "blocks": [
+      {
+        "type": "featured_article",
+        "name": "Featured Article",
+        "limit": 4,
+        "settings": [
+          {
+            "type": "article",
+            "id": "featured_article",
+            "label": "Featured Article",
+            "info": "This will replace blog added in settings"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "t:sections.featured-blog.presets.name"
+      }
+    ]
+  }
+{% endschema %}
+
 {% comment %} {{ 'component-slider.css' | asset_url | stylesheet_tag }}
   {{ 'component-card.css' | asset_url | stylesheet_tag }}
   {{ 'component-article-card.css' | asset_url | stylesheet_tag }}
-  {{ 'section-featured-blog.css' | asset_url | stylesheet_tag }}
+{{ 'section-featured-blog.css' | asset_url | stylesheet_tag }} {% endcomment %}
 
-  {%- style -%}
+{% comment %} {%- style -%}
   .section-{{ section.id }}-padding {
   padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}
   px;
@@ -155,114 +301,3 @@
   {%- endif -%}
   </div>
 </div> {% endcomment %}
-
-{% schema %}
-  {
-    "name": "t:sections.featured-blog.name",
-    "tag": "section",
-    "disabled_on": {
-      "groups": ["header", "footer"]
-    },
-    "settings": [
-      {
-        "type": "inline_richtext",
-        "id": "heading",
-        "default": "THE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EDIT",
-        "label": "Title",
-        "info": "Use &nbsp; for spaces."
-      },
-      {
-        "type": "inline_richtext",
-        "id": "heading_tag",
-        "default": "Inspired by&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&&nbsp;&nbsp;&nbsp;Living With&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Intentionally",
-        "label": "Tag",
-        "info": "Use &nbsp; for spaces."
-      },
-      {
-        "type": "blog",
-        "id": "blog",
-        "label": "t:sections.featured-blog.settings.blog.label",
-        "info": "Use blocks to pick specific articles"
-      },
-      {
-        "type": "range",
-        "id": "post_limit",
-        "min": 2,
-        "max": 4,
-        "step": 1,
-        "default": 3,
-        "label": "t:sections.featured-blog.settings.post_limit.label"
-      }, {
-        "type": "range",
-        "id": "columns_desktop",
-        "min": 1,
-        "max": 4,
-        "step": 1,
-        "default": 3,
-        "label": "t:sections.featured-blog.settings.columns_desktop.label"
-      }, {
-        "type": "color_scheme",
-        "id": "color_scheme",
-        "label": "t:sections.all.colors.label",
-        "info": "t:sections.all.colors.has_cards_info",
-        "default": "background-1"
-      }, {
-        "type": "checkbox",
-        "id": "show_date",
-        "default": true,
-        "label": "t:sections.featured-blog.settings.show_date.label"
-      }, {
-        "type": "checkbox",
-        "id": "show_author",
-        "default": false,
-        "label": "t:sections.featured-blog.settings.show_author.label"
-      }, {
-        "type": "checkbox",
-        "id": "show_view_all",
-        "default": true,
-        "label": "t:sections.featured-blog.settings.show_view_all.label"
-      }, {
-        "type": "header",
-        "content": "t:sections.all.padding.section_padding_heading"
-      }, {
-        "type": "range",
-        "id": "padding_top",
-        "min": 0,
-        "max": 100,
-        "step": 4,
-        "unit": "px",
-        "label": "t:sections.all.padding.padding_top",
-        "default": 36
-      }, {
-        "type": "range",
-        "id": "padding_bottom",
-        "min": 0,
-        "max": 100,
-        "step": 4,
-        "unit": "px",
-        "label": "t:sections.all.padding.padding_bottom",
-        "default": 36
-      }
-    ],
-    "blocks": [
-      {
-        "type": "featured_article",
-        "name": "Featured Article",
-        "limit": 4,
-        "settings": [
-          {
-            "type": "article",
-            "id": "featured_article",
-            "label": "Featured Article",
-            "info": "This will replace blog added in settings"
-          }
-        ]
-      }
-    ],
-    "presets": [
-      {
-        "name": "t:sections.featured-blog.presets.name"
-      }
-    ]
-  }
-{% endschema %}

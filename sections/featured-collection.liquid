@@ -2,7 +2,7 @@
 {%- assign collection_length = section.settings.collection.products | size -%}
 
 {%- if collection_length > 0 -%}
-  <div class="featured-collection">
+  <div class="featured-collection color-{{ section.settings.color_scheme }} gradient{% if section.settings.heading == blank %} no-heading{% endif %}">
     <div class="featured-collection__container container">
 
       {%- if section.settings.title -%}
@@ -139,15 +139,18 @@
         "id": "title",
         "default": "Featured collection",
         "label": "t:sections.featured-collection.settings.title.label"
-      }, {
+      },
+      {
         "type": "richtext",
         "id": "description",
         "label": "t:sections.featured-collection.settings.description.label"
-      }, {
+      },
+      {
         "type": "collection",
         "id": "collection",
         "label": "t:sections.featured-collection.settings.collection.label"
-      }, {
+      },
+      {
         "type": "range",
         "id": "products_to_show",
         "min": 2,
@@ -155,6 +158,12 @@
         "step": 1,
         "default": 4,
         "label": "t:sections.featured-collection.settings.products_to_show.label"
+      }, {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "t:sections.all.colors.label",
+        "info": "t:sections.all.colors.has_cards_info",
+        "default": "background-1"
       }
     ],
     "presets": [

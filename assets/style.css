@@ -1270,7 +1270,7 @@ Font Sizes
   --color-brand-tertiary: #ff6b00;
   --color-text-primary: #181817;
   --color-text-secondary: #F3F3EF;
-  --color-text-tertiary: #ff6b00;
+  --color-text-tertiary: #181817;
   --color-text-inverted: #fff;
   --color-text-link: #ff6b00;
   --color-text-success: #00b533;
@@ -2019,7 +2019,7 @@ html.no-js .no-js-hidden {
 }
 
 .color-foreground {
-  color: rgb(var(--color-foreground));
+  color: var(--color-foreground);
 }
 
 table:not([class]) {
@@ -4407,7 +4407,7 @@ details-disclosure > details {
 }
 
 .gradient {
-  background: rgb(var(--color-background));
+  background: var(--color-background);
   background: var(--gradient-background);
   background-attachment: fixed;
 }
@@ -6113,7 +6113,7 @@ Responsive Videos
 
 .featured-collection {
   border-top: 1px solid;
-  padding-top: 1.875rem;
+  padding: 1.875rem 0 6.25rem;
 }
 .featured-collection__heading {
   margin-bottom: 8.75rem;
