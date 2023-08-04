@@ -3,16 +3,10 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "28bfaa24-11e7-4712-9a9f-453df90bcc03": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.metafields.custom.custom_title.value }}",
-            "text_style": "body"
-          }
-        },
         "title": {
           "type": "title",
           "settings": {
+            "text": "{{ product.metafields.custom.custom_title.value }}"
           }
         },
         "caption": {
@@ -80,7 +74,6 @@
         }
       },
       "block_order": [
-        "28bfaa24-11e7-4712-9a9f-453df90bcc03",
         "title",
         "caption",
         "price",
