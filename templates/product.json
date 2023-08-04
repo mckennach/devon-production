@@ -56,6 +56,20 @@
             "text": "{{ product.metafields.custom.dimensions.value }}",
             "text_style": "body"
           }
+        },
+        "7d05fa42-df89-4453-bed6-5ea844c53dab": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.custom.weight.value }}",
+            "text_style": "body"
+          }
+        },
+        "c65d8e85-a45a-4725-9594-5066c5fc5c7f": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.custom.composition.value }}",
+            "text_style": "body"
+          }
         }
       },
       "block_order": [
@@ -67,7 +81,9 @@
         "buy_buttons",
         "description",
         "56cf43dd-040f-4c9f-946f-79142d736d93",
-        "98f4afb7-7109-4696-9162-60fc893c3cc0"
+        "98f4afb7-7109-4696-9162-60fc893c3cc0",
+        "7d05fa42-df89-4453-bed6-5ea844c53dab",
+        "c65d8e85-a45a-4725-9594-5066c5fc5c7f"
       ],
       "settings": {
         "enable_sticky_info": true,
