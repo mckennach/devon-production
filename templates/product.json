@@ -57,6 +57,13 @@
             "label": "Dimensions:",
             "text": "{{ product.metafields.custom.dimensions.value }}"
           }
+        },
+        "dd66c927-43f8-44d2-a593-8c914035670c": {
+          "type": "text-with-label",
+          "settings": {
+            "label": "Weight:",
+            "text": "{{ product.metafields.custom.weight.value }}"
+          }
         }
       },
       "block_order": [
@@ -68,7 +75,8 @@
         "buy_buttons",
         "description",
         "673710c7-091a-484a-868a-142568b54407",
-        "81da3ee8-e667-4c05-a5cf-c7f48515a597"
+        "81da3ee8-e667-4c05-a5cf-c7f48515a597",
+        "dd66c927-43f8-44d2-a593-8c914035670c"
       ],
       "settings": {
         "enable_sticky_info": true,
