@@ -5008,7 +5008,7 @@ div.imgSrc50.loaded.filtered {
 .underlined-link::before {
   background: #000;
   /* adjust this to move up and down. you may have to adjust the line height of the paragraph if you move it down a lot. */
-  bottom: -4px;
+  bottom: -6px;
   content: "";
   height: 1px;
   left: 0;
@@ -5026,6 +5026,29 @@ div.imgSrc50.loaded.filtered {
   content: ">";
   position: relative;
   margin-left: 1.25rem;
+}
+.underlined-link:hover, .underlined-link:active, .underlined-link:focus {
+  opacity: 0.63;
+  display: block;
+  position: relative;
+  transition: 1.5s all ease-in-out;
+}
+.underlined-link:hover::before, .underlined-link:active::before, .underlined-link:focus::before {
+  background: rgba(24, 24, 23, 0.63);
+  /* adjust this to move up and down. you may have to adjust the line height of the paragraph if you move it down a lot. */
+  bottom: -6px;
+  content: "";
+  height: 1px;
+  left: 0;
+  /****** 
+  optional values below 
+  ******/
+  /* center - (optional) use with adjusting width   */
+  margin: 0 auto;
+  position: absolute;
+  /* optional animation */
+  transition: all 0.5s ease-in-out;
+  width: 100%;
 }
 
 /* --------------------------------------------------------------------------
@@ -5912,8 +5935,95 @@ Responsive Videos
   padding: 0;
 }
 
+.video-section {
+  padding: 6.25rem 0;
+}
+.video-section__media {
+  --ratio-percent: 56.25%;
+  position: relative;
+  padding-bottom: calc(var(--ratio-percent) - var(--media-border-width));
+}
+.video-section__media.global-media-settings--full-width {
+  padding-bottom: var(--ratio-percent);
+}
+.video-section__media.deferred-media {
+  box-shadow: var(--media-shadow-horizontal-offset) var(--media-shadow-vertical-offset) var(--media-shadow-blur-radius) rgba(var(--color-shadow), var(--media-shadow-opacity));
+}
+.video-section__media.deferred-media:after {
+  content: none;
+}
+.video-section__poster.deferred-media__poster:focus {
+  outline-offset: 0.3rem;
+}
+.video-section__media iframe {
+  background-color: rgba(var(--color-foreground), 0.03);
+  border: 0;
+}
+.video-section__poster, .video-section__media iframe, .video-section__media video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.video-section__media video {
+  background: #000000;
+}
+.video-section__media.media-fit-cover video {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.video-section__txt-container {
+  max-width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  flex-grow: 0;
+  flex-shrink: 0;
+  gap: 2%;
+  gap: 2%;
+  justify-content: space-between;
+}
+.video-section__label {
+  display: flex;
+  flex-flow: row nowrap;
+  flex-grow: 0;
+  flex-shrink: 1;
+  gap: 2%;
+  gap: 2%;
+  align-items: baseline;
+  flex: 1;
+}
+.video-section__label p {
+  max-width: 18.9375rem;
+}
+.video-section__label p em {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 0.8125rem;
+  line-height: 0.9375rem;
+  letter-spacing: 25;
+  font-family: "Nitti Basic", " sans-serif";
+  font-style: normal;
+  font-weight: 400;
+  text-transform: none;
+  font-weight: 300;
+  text-transform: normal;
+}
+.video-section__link {
+  display: flex;
+  flex-flow: row nowrap;
+  flex-grow: 0;
+  flex-shrink: 1;
+  align-items: baseline;
+}
+
+/* Needed for gradient continuity with or without animation so that transparent PNG images come up as we would expect */
+.scroll-trigger:where(.gradient.video-section__media) {
+  background: transparent;
+}
+
 .deferred-media {
   overflow: hidden;
+  margin-bottom: 0.9375rem;
+  /* outline styling for Windows High Contrast Mode */
 }
 .deferred-media__poster {
   display: block;
@@ -5970,6 +6080,21 @@ Responsive Videos
   transition: transform var(--duration-short) ease, color var(--duration-short) ease;
   z-index: 1;
 }
+@media (forced-colors: active) {
+  .deferred-media__poster:focus {
+    outline: transparent solid 1px;
+  }
+}
+.deferred-media__poster-button:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+.deferred-media__poster-button .icon {
+  width: 2rem;
+  height: 2rem;
+}
+.deferred-media__poster-button .icon-play {
+  margin-left: 0.2rem;
+}
 
 .media > .deferred-media__poster {
   display: flex;
@@ -5984,111 +6109,6 @@ Responsive Videos
 .global-media-settings--full-width .deferred-media__poster,
 .global-media-settings--full-width .deferred-media__poster:is(:focus, :focus-visible) {
   border-radius: 0;
-}
-
-/* outline styling for Windows High Contrast Mode */
-@media (forced-colors: active) {
-  .deferred-media__poster:focus {
-    outline: transparent solid 1px;
-  }
-}
-.deferred-media__poster-button:hover {
-  transform: translate(-50%, -50%) scale(1.1);
-}
-
-.deferred-media__poster-button .icon {
-  width: 2rem;
-  height: 2rem;
-}
-
-.deferred-media__poster-button .icon-play {
-  margin-left: 0.2rem;
-}
-
-.video-section__media {
-  --ratio-percent: 56.25%;
-  position: relative;
-  padding-bottom: calc(var(--ratio-percent) - var(--media-border-width));
-}
-
-/* Needed for gradient continuity with or without animation so that transparent PNG images come up as we would expect */
-.scroll-trigger:where(.gradient.video-section__media) {
-  background: transparent;
-}
-
-.video-section__media.global-media-settings--full-width {
-  padding-bottom: var(--ratio-percent);
-}
-
-.video-section__media.deferred-media {
-  box-shadow: var(--media-shadow-horizontal-offset) var(--media-shadow-vertical-offset) var(--media-shadow-blur-radius) rgba(var(--color-shadow), var(--media-shadow-opacity));
-}
-
-.video-section__media.deferred-media:after {
-  content: none;
-}
-
-.video-section__poster.deferred-media__poster:focus {
-  outline-offset: 0.3rem;
-}
-
-.video-section__media iframe {
-  background-color: rgba(var(--color-foreground), 0.03);
-  border: 0;
-}
-
-.video-section__poster,
-.video-section__media iframe,
-.video-section__media video {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.video-section__media video {
-  background: #000000;
-}
-
-.video-section__media.media-fit-cover video {
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-.video-section {
-  padding: 6.25rem 0;
-}
-.video-section__txt-container {
-  max-width: 100%;
-  display: flex;
-  flex-flow: row wrap;
-  flex-grow: 0;
-  flex-shrink: 0;
-  justify-content: space-between;
-}
-.video-section__label {
-  flex: 1;
-  display: flex;
-  flex-flow: row nowrap;
-  flex-grow: 0;
-  flex-shrink: 0;
-}
-.video-section__label p {
-  flex: 0 0 auto;
-  max-width: 100%;
-  width: auto;
-}
-.video-section__label p em {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 0.8125rem;
-  line-height: 0.9375rem;
-  letter-spacing: 25;
-  font-family: "Nitti Basic", " sans-serif";
-  font-style: normal;
-  font-weight: 400;
-  text-transform: none;
-  font-weight: 300;
-  text-transform: normal;
 }
 
 .featured-collection {
@@ -6127,7 +6147,7 @@ Responsive Videos
 .featured-collection__txt-container::before {
   background: #000;
   /* adjust this to move up and down. you may have to adjust the line height of the paragraph if you move it down a lot. */
-  bottom: -4px;
+  bottom: -6px;
   content: "";
   height: 1px;
   left: 0;
@@ -6155,7 +6175,7 @@ Responsive Videos
 .featured-collection__item:hover .featured-collection__txt-container::before {
   background: #000;
   /* adjust this to move up and down. you may have to adjust the line height of the paragraph if you move it down a lot. */
-  bottom: -4px;
+  bottom: -6px;
   content: "";
   height: 1px;
   left: 0;
