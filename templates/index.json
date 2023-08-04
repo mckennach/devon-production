@@ -22,10 +22,28 @@
         "collection": "frontpage",
         "products_to_show": 4
       }
+    },
+    "99fec0be-3ef7-463a-9112-d1d55156f89d": {
+      "type": "featured-blog",
+      "settings": {
+        "heading": "Blog posts",
+        "heading_size": "h1",
+        "blog": "living",
+        "post_limit": 3,
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_image": true,
+        "show_date": true,
+        "show_author": false,
+        "show_view_all": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "89a89aff-387f-481a-88df-b9d4e059a70f",
-    "7d4e0139-da51-4404-b40d-dd4e182e3b00"
+    "7d4e0139-da51-4404-b40d-dd4e182e3b00",
+    "99fec0be-3ef7-463a-9112-d1d55156f89d"
   ]
 }
