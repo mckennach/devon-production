@@ -597,7 +597,14 @@
     {
       "type": "title",
       "name": "t:sections.main-product.blocks.title.name",
-      "limit": 1
+      "limit": 1,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "If custom title is added, it will replace the given title"
+        }
+      ]
     },
     {
       "type": "price",
@@ -1265,6 +1272,22 @@
           "id": "enable_quick_add",
           "label": "t:sections.main-product.blocks.complementary_products.settings.enable_quick_add.label",
           "default": false
+        }
+      ]
+    },
+    {
+      "type": "text-with-label",
+      "name": "Text with label",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "Text"
         }
       ]
     },
