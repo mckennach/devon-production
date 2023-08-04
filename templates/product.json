@@ -60,7 +60,7 @@
         "98f4afb7-7109-4696-9162-60fc893c3cc0": {
           "type": "text",
           "settings": {
-            "text": "{{ product.metafields.custom.dimensions.value }}",
+            "text": "{{ product.metafields.custom.weight.value }}",
             "text_style": "body"
           }
         },
