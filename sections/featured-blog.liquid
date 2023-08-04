@@ -26,7 +26,7 @@
         </div>
         {%- unless section.settings.heading_tag == blank -%}
           <div class="featured-blog__tag">
-            <div class="featured-blog__tag-container" container-md>
+            <div class="featured-blog__tag-container" container>
               <h3
                 id="SectionTag-{{section.id }}"
                 class="featured-blog__tag {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -39,7 +39,7 @@
       </div>
     {%- endunless -%}
 
-    <div class="featured-blog__article-container" container-md>
+    <div class="featured-blog__article-container" container>
 
       <ul class="featured-blog__posts " role="list">
         {%- if section.settings.blog != blank and section.settings.blog.articles_count > 0 -%}

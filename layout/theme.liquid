@@ -62,6 +62,7 @@
 
       {% for scheme in settings.color_schemes -%}
         {% assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id %}
+
         {% if forloop.index == 1 -%}
           : root, {%- endif %}
         .color-{{ scheme.id }}{
