@@ -64,6 +64,13 @@
             "label": "Weight:",
             "text": "{{ product.metafields.custom.weight.value }}"
           }
+        },
+        "9c6f258e-43f7-4a8f-9524-fded18fde7bc": {
+          "type": "text-with-label",
+          "settings": {
+            "label": "Composition:",
+            "text": "{{ product.metafields.custom.composition.value }}"
+          }
         }
       },
       "block_order": [
@@ -76,7 +83,8 @@
         "description",
         "673710c7-091a-484a-868a-142568b54407",
         "81da3ee8-e667-4c05-a5cf-c7f48515a597",
-        "dd66c927-43f8-44d2-a593-8c914035670c"
+        "dd66c927-43f8-44d2-a593-8c914035670c",
+        "9c6f258e-43f7-4a8f-9524-fded18fde7bc"
       ],
       "settings": {
         "enable_sticky_info": true,
