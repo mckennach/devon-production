@@ -46,7 +46,7 @@
         "56cf43dd-040f-4c9f-946f-79142d736d93": {
           "type": "text",
           "settings": {
-            "text": "{{ product.metafields.custom.disclaimer.value }}{{ product.metafields.custom.dimensions.value }}{{ product.metafields.custom.weight.value }}{{ product.metafields.custom.composition.value }}",
+            "text": "{{ product.metafields.custom.disclaimer.value }}",
             "text_style": "body"
           }
         }
