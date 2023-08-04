@@ -154,13 +154,13 @@
       },
       "inverse": {
         "settings": {
-          "background": "#242833",
+          "background": "#d5d3c6",
           "background_gradient": "",
-          "text": "#ffffff",
-          "button": "#ffffff",
-          "button_label": "#000000",
-          "secondary_button_label": "#ffffff",
-          "shadow": "#121212"
+          "text": "#181817",
+          "button": "#d5d3c6",
+          "button_label": "#181817",
+          "secondary_button_label": "#181817",
+          "shadow": "#181817"
         }
       },
       "accent-1": {
