@@ -7082,8 +7082,14 @@ slider-component.slider-component-full-width {
   padding-bottom: 0.9375rem;
   margin-bottom: 1.25rem;
 }
+.featured-blog__title-container::after {
+  content: "";
+  position: absolute;
+  right: 0;
+}
 .featured-blog__tag-container {
   text-align: right;
+  margin-bottom: 12.5rem;
 }
 .featured-blog__posts {
   list-style-type: none;
