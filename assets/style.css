@@ -1270,7 +1270,7 @@ Font Sizes
   /* 2 */
   border-style: solid;
   /* 2 */
-  border-color: var(--color-borer-primary);
+  border-color: var(--color-border-primary);
   /* 2 */
 }
 
@@ -5401,30 +5401,31 @@ button {
 
 .button {
   background-color: transparent;
-  border: 0.125rem solid #000;
+  border: 0.0625rem solid var(--color-border-primary);
   color: #000;
   cursor: pointer;
   display: inline-block;
   outline: none;
-  padding: 0.625rem 1.875rem;
+  padding: 1.5625rem 1.875rem;
   text-align: center;
-  text-transform: uppercase;
   transition: all 0.1s ease-in-out;
+  color: var(--color-border-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 0.875rem;
-  line-height: 1.875rem;
-  letter-spacing: 2;
-  font-family: "Mark Medium", "sans-serif";
+  font-size: 0.8125rem;
+  line-height: 0.9375rem;
+  letter-spacing: 25;
+  font-family: "Nitti Basic", " sans-serif";
   font-style: normal;
   font-weight: 400;
   text-transform: none;
-  font-weight: normal;
+  font-weight: 300;
+  text-transform: normal;
   text-transform: uppercase;
+  font-weight: 100;
 }
 .button:hover {
-  background-color: #000;
-  color: white;
+  background-color: white;
 }
 
 a.uppercase-link {
@@ -5718,7 +5719,7 @@ Responsive Videos
   font-size: 2.1875rem;
   line-height: -0.9375rem;
   letter-spacing: 1.625rem;
-  font-family: "Canela Italic", "sans-serif";
+  font-family: "Nitti Basic", "sans-serif";
   font-style: normal;
   font-weight: 400;
   text-transform: none;
