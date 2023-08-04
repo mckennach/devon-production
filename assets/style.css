@@ -6387,9 +6387,6 @@ Responsive Videos
             clip-path: polygon(var(--shape--blob-5));
   }
 }
-.article-card {
-  max-width: 21.875rem;
-}
 .article-card__img-container {
   display: block;
   height: 0;
@@ -7099,5 +7096,11 @@ slider-component.slider-component-full-width {
   flex-flow: row nowrap;
   flex-grow: 0;
   flex-shrink: 0;
+  gap: 3.125rem;
+  gap: 3.125rem;
   justify-content: flex-end;
+}
+.featured-blog__post {
+  width: 100%;
+  max-width: 21.875rem;
 }
