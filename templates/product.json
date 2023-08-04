@@ -23,7 +23,7 @@
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "button"
+            "picker_type": "dropdown"
           }
         },
         "quantity_selector": {
@@ -42,6 +42,13 @@
           "type": "description",
           "settings": {
           }
+        },
+        "56cf43dd-040f-4c9f-946f-79142d736d93": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.custom.disclaimer.value }}{{ product.metafields.custom.dimensions.value }}{{ product.metafields.custom.weight.value }}{{ product.metafields.custom.composition.value }}",
+            "text_style": "body"
+          }
         }
       },
       "block_order": [
@@ -51,7 +58,8 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "description"
+        "description",
+        "56cf43dd-040f-4c9f-946f-79142d736d93"
       ],
       "settings": {
         "enable_sticky_info": true,
