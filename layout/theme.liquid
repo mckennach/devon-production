@@ -14,12 +14,12 @@
         href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
 
-    {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
+    {% comment %} {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
       <link
         rel="preconnect"
         href="https://fonts.shopifycdn.com"
         crossorigin>
-    {%- endunless -%}
+    {%- endunless -%} {% endcomment %}
 
     <title>
       {{ page_title }}
@@ -54,11 +54,68 @@
     %}
 
     {% style %}
-      {{ settings.type_body_font | font_face: font_display: 'swap' }}
+
+      @font-face {
+          font-family: "Nitti Basic";
+          src: url("{{ 'NittiBasic-Black.eot' | asset_url }}") format("embedded-opentype");
+          src: url("{{ 'NittiBasic-Black.eot#iefix' | asset_url }}") format("embedded-opentype"),
+              url("{{ 'NittiBasic-Black.woff2' | asset_url }}") format("woff2"),
+              url("{{ 'NittiBasic-Black.woff' | asset_url }}") format("woff"),
+              url("{{ 'NittiBasic-Black.ttf' | asset_url }}") format("truetype");
+          font-style: normal;
+          font-display: swap;
+      }
+
+      @font-face {
+          font-family: "Nitti Basic";
+          src: url("{{ 'NittiBasic-Light.eot' | asset_url }}") format("embedded-opentype");
+          src: url("{{ 'NittiBasic-Light.eot#iefix' | asset_url }}") format("embedded-opentype"),
+          url("{{ 'NittiBasic-Light.woff2' | asset_url }}") format("woff2"),
+          url("{{ 'NittiBasic-Light.woff' | asset_url }}") format("woff"),
+          url("{{ 'NittiBasic-Light.ttf' | asset_url }}") format("truetype");
+          font-style: normal;
+          font-display: swap;
+      }
+
+      @font-face {
+          font-family: "Nitti Basic";
+          src: url("{{ 'NittiBasic-Medium.eot' | asset_url }}") format("embedded-opentype");
+          src: url("{{ 'NittiBasic-Medium.eot#iefix' | asset_url }}") format("embedded-opentype"),
+          url("{{ 'NittiBasic-Medium.woff2' | asset_url }}") format("woff2"),
+          url("{{ 'NittiBasic-Medium.woff' | asset_url }}") format("woff"),
+          url("{{ 'NittiBasic-Medium.ttf' | asset_url }}") format("truetype");
+          font-style: normal;
+          font-display: swap;
+      }
+
+
+      @font-face {
+          font-family: "Unica 77 LL";
+          src: url("{{ 'Unica_77LL-Regular.eot' | asset_url }}") format("embedded-opentype");
+          src: url("{{ 'Unica_77LL-Regular.eot#iefix' | asset_url }}") format("embedded-opentype"),
+          url("{{ 'Unica_77LL-Regular.woff2' | asset_url }}") format("woff2"),
+          url("{{ 'Unica_77LL-Regular.woff' | asset_url }}") format("woff"),
+          url("{{ 'Unica_77LL-Regular.ttf' | asset_url }}") format("truetype");
+          font-style: normal;
+          font-display: swap;
+      }
+
+      @font-face {
+          font-family: "Unica 77 LL TT";
+          src: url("{{ 'Unica_77LLTT-Regular.eot' | asset_url }}") format("embedded-opentype");
+          src: url("{{ 'Unica_77LLTT-Regular.eot#iefix' | asset_url }}") format("embedded-opentype"),
+          url("{{ 'Unica_77LLTT-Regular.woff2' | asset_url }}") format("woff2"),
+          url("{{ 'Unica_77LLTT-Regular.woff' | asset_url }}") format("woff"),
+          url("{{ 'Unica_77LLTT-Regular.ttf' | asset_url }}") format("truetype");
+          font-style: normal;
+          font-display: swap;
+      }
+
+      /* {{ settings.type_body_font | font_face: font_display: 'swap' }}
       {{ body_font_bold | font_face: font_display: 'swap' }}
       {{ body_font_italic | font_face: font_display: 'swap' }}
       {{ body_font_bold_italic | font_face: font_display: 'swap' }}
-      {{ settings.type_header_font | font_face: font_display: 'swap' }}
+      {{ settings.type_header_font | font_face: font_display: 'swap' }} */
 
       {% for scheme in settings.color_schemes -%}
         {% assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id %}
@@ -128,8 +185,8 @@
       }
 
       :root {
-        --font-body-family: 'Unica 77 LL', {{ settings.type_body_font.fallback_families }}
-        ;
+        --font-body-family: 'Unica 77 LL', sans-serif;
+        
         --font-body-style: normal;
         --font-body-weight: normal;
         --font-body-weight-bold: {{ settings.type_body_font.weight | plus: 300 | at_most: 1000 }}
@@ -377,23 +434,6 @@
     {% comment %} {{ 'base.css' | asset_url | stylesheet_tag }} {% endcomment %}
     {{ 'style.css' | asset_url | stylesheet_tag }}
 
-    {%- unless settings.type_body_font.system? -%}
-      <link
-        rel="preload"
-        as="font"
-        href="{{ settings.type_body_font | font_url }}"
-        type="font/woff2"
-        crossorigin>
-    {%- endunless -%}
-    {%- unless settings.type_header_font.system? -%}
-
-      <link
-        rel="preload"
-        as="font"
-        href="{{ settings.type_header_font | font_url }}"
-        type="font/woff2"
-        crossorigin>
-    {%- endunless -%}
 
     {%- if settings.predictive_search_enabled -%}
       <link
