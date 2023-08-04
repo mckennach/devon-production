@@ -9,18 +9,6 @@
             "text": "{{ product.metafields.custom.custom_title.value }}"
           }
         },
-        "caption": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.metafields.descriptors.subtitle.value }}",
-            "text_style": "subtitle"
-          }
-        },
-        "price": {
-          "type": "price",
-          "settings": {
-          }
-        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -75,8 +63,6 @@
       },
       "block_order": [
         "title",
-        "caption",
-        "price",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
