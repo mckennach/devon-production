@@ -1,5 +1,18 @@
 {
   "sections": {
+    "bc97ee24-bcd0-4981-9301-fb0ba0827e2c": {
+      "type": "video",
+      "settings": {
+        "video_label": "",
+        "link": "",
+        "link_label": "",
+        "enable_video_looping": false,
+        "enable_video_autoplay": true,
+        "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+        "description": "",
+        "section_size": "container-sm"
+      }
+    },
     "main": {
       "type": "main-page",
       "settings": {
@@ -19,6 +32,7 @@
     }
   },
   "order": [
+    "bc97ee24-bcd0-4981-9301-fb0ba0827e2c",
     "main",
     "form"
   ]
