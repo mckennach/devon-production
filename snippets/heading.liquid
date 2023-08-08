@@ -1,0 +1,32 @@
+{%- comment -%}
+  It creates a style tag and it restricts an image from growing larger than its max resolution.
+
+
+  Accepts:
+  - title: text
+  - title_tag: h1,h2,h3,h4
+  - class:
+
+  Usage:
+  In your liquid template file, copy the following line
+  - {% include 'responsive-image' with image: featured_image, image_class: "css-class", wrapper_class: "wrapper-css-class", max_width: 700, max_height: 800 %}
+{%- endcomment -%}
+<div class="heading {{ class | escape }}__heading {% if animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+  <div class="heading__container {{ class | escape}}__heading-container" container>
+    {%- if title_tag == 'h1' -%}
+      <h1 class="heading__title {{ class | escape }}_title">{{ title }}</h1>
+    {%- elsif title_tag == 'h2' -%}
+      <h2 class="heading__title {{ class | escape }}_title">{{ title }}</h2>
+    {%- elsif title_tag == 'h3' -%}
+      <h3 class="heading__title {{ class | escape }}_title">{{ title }}</h3>
+    {%- elsif title_tag == 'h4' -%}
+      <h4 class="heading__title {{ class | escape }}_title">{{ title }}</h4>
+    {%- elsif title_tag == 'h5' -%}
+      <h5 class="heading__title {{ class | escape }}_title">{{ title }}</h5>
+    {%- elsif title_tag == 'h6' -%}
+      <h6 class="heading__title {{ class | escape }}_title">{{ title }}</h6>
+    {%- else -%}
+      <h2 class="heading__title {{ class | escape }}_title">{{ title }}</h2>
+    {%- endif -%}
+  </div>
+</div>

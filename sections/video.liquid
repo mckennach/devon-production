@@ -19,9 +19,18 @@
   100vw
 {%- endcapture -%}
 
-<div class="container-md">
-  <div class="video-section isolate ">
-    {{ autoplay }}
+
+<div class="video-section isolate ">
+
+  {%- if section.settings.video_title -%}
+    {% include 'heading' 
+     with title: section.settings.video_title,
+     title_tag: 'h2',
+     class: 'video',
+     animations_reveal_on_scroll: settings.animations_reveal_on_scroll %}
+
+  {%- endif -%}
+  <div class="{{ section.settings.section_size }}">
     <noscript>
       <div
         class="video-section__media"
@@ -76,16 +85,16 @@
       <template>
         {%- if section.settings.video == null and section.settings.video_url != null -%}
           {%- liquid
-            assign loop = ''
-            if section.settings.enable_video_looping
-              assign loop = '&loop=1&playlist=' | append: video_id
-            endif
-            if section.settings.enable_video_autoplay
-              assign autoplay = 'autoplay=1'
-            else
-              assign autoplay = 'autoplay=0'
-            endif
-          -%}
+                assign loop = ''
+                if section.settings.enable_video_looping
+                  assign loop = '&loop=1&playlist=' | append: video_id
+                endif
+                if section.settings.enable_video_autoplay
+                  assign autoplay = 'autoplay=1'
+                else
+                  assign autoplay = 'autoplay=0'
+                endif
+              -%}
           {%- if section.settings.video_url.type == 'youtube' -%}
             <iframe
               src="https://www.youtube.com/embed/{{ video_id }}?enablejsapi=1&{{ autoplay }}{{ loop }}"
@@ -132,6 +141,8 @@
     {%- endif -%}
 
   </div>
+
+
 </div>
 
 

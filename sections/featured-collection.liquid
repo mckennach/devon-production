@@ -3,15 +3,10 @@
 
 {%- if collection_length > 0 -%}
   <div class="featured-collection color-{{ section.settings.color_scheme }} gradient{% if section.settings.heading == blank %} no-heading{% endif %}">
+    {%- if section.settings.title -%}
+      {% include 'heading' with title: section.settings.title, title_tag: 'h2', class: 'featured-collection', animations_reveal_on_scroll: settings.animations_reveal_on_scroll %}
+    {%- endif -%}
     <div class="featured-collection__container container">
-
-      {%- if section.settings.title -%}
-        <div class="featured-collection__heading">
-          <h2 class="featured-collection__title {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" data-cascade>{{ section.settings.title }}</h2>
-        </div>
-      {%- endif -%}
-
-
       <div class="featured-collection__collection">
         <ul class="featured-collection__collection-list">
           {%- for product in products limit: section.settings.products_to_show -%}
