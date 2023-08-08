@@ -21,10 +21,21 @@
         "form_title": "How can we help you?",
         "color_scheme": "background-1"
       }
+    },
+    "f7d9757c-500d-4384-bb01-c5f7f016d876": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured collection",
+        "description": "",
+        "collection": "frontpage",
+        "products_to_show": 4,
+        "color_scheme": ""
+      }
     }
   },
   "order": [
     "bc97ee24-bcd0-4981-9301-fb0ba0827e2c",
-    "form"
+    "form",
+    "f7d9757c-500d-4384-bb01-c5f7f016d876"
   ]
 }
