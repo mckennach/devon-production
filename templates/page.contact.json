@@ -3,13 +3,14 @@
     "bc97ee24-bcd0-4981-9301-fb0ba0827e2c": {
       "type": "video",
       "settings": {
-        "video_title": "CONTACT&nbsp;&nbsp;&nbsp;&nbsp;US",
+        "video_title": "CONTACT    US",
         "video_label": "",
         "link": "",
         "link_label": "",
         "enable_video_looping": false,
         "enable_video_autoplay": true,
         "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+        "cover_image": "shopify:\/\/shop_images\/contact-vid.jpg",
         "description": "",
         "section_size": "container-sm"
       }
@@ -21,10 +22,21 @@
         "form_title": "How can we help you?",
         "color_scheme": "background-1"
       }
+    },
+    "a003b700-f171-4efa-8f8f-fc09d0ddb755": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured collection",
+        "description": "",
+        "collection": "frontpage",
+        "products_to_show": 4,
+        "color_scheme": ""
+      }
     }
   },
   "order": [
     "bc97ee24-bcd0-4981-9301-fb0ba0827e2c",
-    "form"
+    "form",
+    "a003b700-f171-4efa-8f8f-fc09d0ddb755"
   ]
 }
