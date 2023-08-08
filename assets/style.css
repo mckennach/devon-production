@@ -4646,11 +4646,11 @@ div.imgSrc50.loaded.filtered {
 }
 
 .underlined-link {
-  display: block;
+  display: inline-block;
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 0.9375rem;
+  font-size: 0.8125rem;
   line-height: 1.125rem;
   letter-spacing: 25;
   font-family: "Nitti Basic Light", " sans-serif";
@@ -5009,7 +5009,7 @@ button {
   color: var(--color-border-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 0.9375rem;
+  font-size: 0.8125rem;
   line-height: 1.125rem;
   letter-spacing: 25;
   font-family: "Nitti Basic Light", " sans-serif";
@@ -5404,7 +5404,7 @@ Responsive Videos
   vertical-align: top;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 0.9375rem;
+  font-size: 0.8125rem;
   line-height: 1.125rem;
   letter-spacing: 25;
   font-family: "Nitti Basic Light", " sans-serif";
@@ -5984,7 +5984,7 @@ Responsive Videos
 .article-card__date {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 0.9375rem;
+  font-size: 0.8125rem;
   line-height: 1.125rem;
   letter-spacing: 25;
   font-family: "Nitti Basic Light", " sans-serif";
@@ -6000,7 +6000,7 @@ Responsive Videos
 .article-card__title {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 0.9375rem;
+  font-size: 0.8125rem;
   line-height: 1.125rem;
   letter-spacing: 25;
   font-family: "Nitti Basic Light", " sans-serif";
@@ -6587,6 +6587,82 @@ slider-component.slider-component-full-width {
   margin: 0;
   padding: 0;
 }
+.side-navigation__submenu {
+  padding-left: 0.625rem;
+}
+
+.home-hero__grid {
+  display: flex;
+  flex-flow: row nowrap;
+  flex-grow: 0;
+  flex-shrink: 0;
+  justify-content: space-between;
+}
+.home-hero__grid-item {
+  max-width: 100%;
+  align-self: center;
+}
+@media (min-width: 768px) {
+  .home-hero__grid-item {
+    flex: 1 1 0;
+    max-width: 100%;
+  }
+}
+.home-hero__featured-collection {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 21.25rem;
+}
+.home-hero__collection-img-container {
+  display: block;
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 137.5%;
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+.home-hero__collection-img-container img {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 50% 50%;
+     object-position: 50% 50%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+}
+.home-hero__featured-figure {
+  max-width: 60%;
+  margin-right: 0;
+  margin-left: auto;
+}
+.home-hero__img-container {
+  display: block;
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 123.9339752407%;
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+.home-hero__img-container img {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 50% 50%;
+     object-position: 50% 50%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+}
+.home-hero__section-caption {
+  max-width: 20rem;
+}
 
 .video-section {
   padding: 6.25rem 0;
@@ -6650,7 +6726,7 @@ slider-component.slider-component-full-width {
 .video-section__label p em {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 0.9375rem;
+  font-size: 0.8125rem;
   line-height: 1.125rem;
   letter-spacing: 25;
   font-family: "Nitti Basic Light", " sans-serif";
@@ -6817,7 +6893,7 @@ slider-component.slider-component-full-width {
 }
 
 .featured-blog {
-  padding: 5.625rem 0;
+  padding: 5.625rem 0 13.75rem;
   position: relative;
 }
 .featured-blog__title-container {
@@ -6885,7 +6961,7 @@ slider-component.slider-component-full-width {
 .contact__heading-container h2 {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 0.9375rem;
+  font-size: 0.8125rem;
   line-height: 1.125rem;
   letter-spacing: 25;
   font-family: "Nitti Basic Light", " sans-serif";
@@ -7069,7 +7145,7 @@ slider-component.slider-component-full-width {
 .product__text-with-label {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 0.9375rem;
+  font-size: 0.8125rem;
   line-height: 1.125rem;
   letter-spacing: 25;
   font-family: "Nitti Basic Light", " sans-serif";
@@ -7109,7 +7185,7 @@ slider-component.slider-component-full-width {
 .quantity__label {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 0.9375rem;
+  font-size: 0.8125rem;
   line-height: 1.125rem;
   letter-spacing: 25;
   font-family: "Nitti Basic Light", " sans-serif";
@@ -7217,7 +7293,7 @@ slider-component.slider-component-full-width {
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 0.9375rem;
+  font-size: 0.8125rem;
   line-height: 1.125rem;
   letter-spacing: 25;
   font-family: "Nitti Basic Light", " sans-serif";

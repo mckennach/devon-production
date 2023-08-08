@@ -1,3 +1,67 @@
+<div class="home-hero">
+  <div class="home-hero__container container">
+    <div class="home-hero__grid">
+      {%- if section.settings.featured_collection -%}
+        {% liquid
+          assign collection = section.settings.featured_collection
+          assign collection_img = collection.image
+        %}
+        <div class="home-hero__grid-item">
+
+          <figure class="home-hero__featured-collection">
+            <div
+              class="home-hero__collection-img-container scroll-trigger animate--slide-in"
+              data-cascade
+              style="--animation-order: 1;">
+              <img
+                srcset="{{ collection_img.src | image_url: width: 1500 }}"
+                src="{{ collection_img.src | image_url: width: 533 }}"
+                alt="{{ collection_img.src.alt | escape }}"
+                class="motion-reduce"
+                loading="lazy"
+                width="{{ collection_img.width }}"
+                height="{{ collection_img.height }}">
+            </div>
+            <figcaption
+              class="scroll-trigger animate--slide-in"
+              data-cascade
+              style="--animation-order: 2;">
+              <a href="{{ collection.url }}" class="underlined-link">Shop the Collection</a>
+            </figcaption>
+          </figure>
+
+        </div>
+      {%- endif -%}
+      {%- if section.settings.featured_img -%}
+        <div class="home-hero__grid-item">
+          <figure class="home-hero__featured-figure">
+            <div
+              class="home-hero__img-container scroll-trigger animate--slide-in"
+              data-cascade
+              style="--animation-order: 3;">
+              <img
+                srcset="{{ section.settings.featured_img.src | image_url: width: 1500 }}"
+                src="{{ section.settings.featured_img.src | image_url: width: 533 }}"
+                alt="{{ section.settings.featured_img.src.alt | escape }}"
+                class="motion-reduce"
+                loading="lazy"
+                width="{{ section.settings.featured_img.width }}"
+                height="{{ section.settings.featured_img.height }}">
+            </div>
+            {%- if section.settings.featured_img_caption -%}
+              <figcaption
+                class="home-hero__section-caption scroll-trigger animate--slide-in"
+                data-cascade
+                style="--animation-order: 4;">{{ section.settings.featured_img_caption }}</figcaption>
+            {%- endif -%}
+          </figure>
+
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
 {% schema %}
   {
     "name": "Home Hero",
