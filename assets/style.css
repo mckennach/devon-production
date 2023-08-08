@@ -1347,6 +1347,7 @@ Font Sizes
   font-display: swap;
   -webkit-font-smoothing: antialiased;
   font-size: 0.8125rem;
+  background-color: #F3F3EF;
   color: #181817;
   --page-width: rem(1880);
   --font-family-primary: Unica 77 LL, -apple-system, blinkmacsystemfont, Segoe UI, Roboto, Helvetica Neue, arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
@@ -6827,9 +6828,21 @@ slider-component.slider-component-full-width {
   content: "";
   position: absolute;
   right: 10%;
-  height: 90%;
+  height: 100%;
+  top: 0;
   width: 1px;
   background-color: rgb(var(--color-foreground));
+}
+.featured-blog__title-container [container-md]::before {
+  content: "";
+  position: absolute;
+  right: 10%;
+  height: 100%;
+  height: 14%;
+  z-index: 1;
+  top: 0;
+  width: 1px;
+  background-color: rgb(var(--color-background));
 }
 .featured-blog__title {
   margin-bottom: 1.25rem;
