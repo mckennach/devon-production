@@ -4,8 +4,6 @@
   data-section="{{ section.id }}"
 >
 
-
-
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
   {% if section.settings.image_zoom == 'hover' %}
@@ -36,8 +34,8 @@
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
 
-  <div class="product product--{{ section.settings.media_size }}" container>
-    <div class="product__media-wrapper product__grid-item">
+  <div class="product product--{{ section.settings.media_size }} container-md" >
+    <div class="product__media-wrapper product__grid-item tablet-hide">
       {% render 'product-media-gallery', variant_images: variant_images %}
     </div>
     <div class="product__info-wrapper product__grid-item {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" >
@@ -87,16 +85,12 @@
                     price_class: 'price--large'
                   -%}
 
-                  <div {{ block.shopify_attributes }}>
-                    {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
-                    {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
-                      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-                      {{ form | payment_terms }}
-                    {%- endform -%}
-                  </div>
-
                 </div>
            
+              </div>
+
+              <div class="product__media-wrapper tabletup-hide">
+                {% render 'product-media-gallery', variant_images: variant_images %}
               </div>
               
               
@@ -155,12 +149,14 @@
               {%- endif -%}
             {%- when 'text-with-label' -%}
               {%- if block.settings.text != blank -%}
-                <p
-                  class="product__text-with-label inline-richtext"
-                  {{ block.shopify_attributes }}
-                >
-                  {{ block.settings.label | escape }} {{ block.settings.text }}
-                </p>
+                <div>
+                  <p
+                    class="product__text-with-label inline-richtext"
+                    {{ block.shopify_attributes }}>
+                    {{ block.settings.label | escape }} {{ block.settings.text }}
+                  </p>
+                </div>
+                
 
               {%- endif -%}
            
@@ -196,7 +192,7 @@
             {%- when 'quantity_selector' -%}
               <div
                 id="Quantity-Form-{{ section.id }}"
-                class="product-form__input product-form__quantity{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}"
+                class="product-form__input product-form__quantity quantity__container{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}"
                 {{ block.shopify_attributes }}
               >
                 {% comment %} TODO: enable theme-check once `item_count_for_variant` is accepted as valid filter {% endcomment %}
@@ -219,7 +215,6 @@
                         </svg>
                       </span>
                     </span>
-                    <span>({{- 'products.product.quantity.in_cart_html' | t: quantity: cart_qty -}})</span>
                   </span>
                 </label>
                 <quantity-input class="quantity">
@@ -227,7 +222,7 @@
                     <span class="visually-hidden">
                       {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
                     </span>
-                    {% render 'icon-minus' %}
+                    -
                   </button>
                   <input
                     class="quantity__input"
@@ -249,7 +244,7 @@
                     <span class="visually-hidden">
                       {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
                     </span>
-                    {% render 'icon-plus' %}
+                    +
                   </button>
                 </quantity-input>
                 <div class="quantity__rules caption no-js-hidden">
@@ -431,21 +426,12 @@
               %}
           {%- endcase -%}
         {%- endfor -%}
-        <a href="{{ product.url }}" class="link product__view-details animate-arrow">
-          {{ 'products.product.view_full_details' | t }}
-          {% render 'icon-arrow' %}
-        </a>
       </product-info>
     </div>
-    {%- if section.settings.media_position == 'right' -%}
-      {% comment %} Duplicate gallery to display after product content on tablet/desktop breakpoint {% endcomment %}
-      <div class="grid__item product__media-wrapper small-hide">
-        {% render 'product-media-gallery', variant_images: variant_images, is_duplicate: true %}
-      </div>
-    {%- endif -%}
+
   </div>
 
-  {% render 'product-media-modal' variant_images: variant_images %}
+
 
   {% assign popups = section.blocks | where: 'type', 'popup' %}
   {%- for block in popups -%}
@@ -473,10 +459,7 @@
     </modal-dialog>
   {%- endfor -%}
 
-  {%- if product.media.size > 0 -%}
-    <script src="{{ 'product-modal.js' | asset_url }}" defer="defer"></script>
-    <script src="{{ 'media-gallery.js' | asset_url }}" defer="defer"></script>
-  {%- endif -%}
+
 
   {%- if first_3d_model -%}
     <script type="application/json" id="ProductJSON-{{ product.id }}">

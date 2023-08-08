@@ -13,6 +13,8 @@
       assign fix_ratio = true
     endif
   endif
+
+  assign title = section.settings.video_title
 -%}
 
 {%- capture sizes -%}
@@ -22,9 +24,9 @@
 
 <div class="video-section isolate ">
 
-  {%- if section.settings.video_title -%}
-    {% include 'heading' 
-     with title: section.settings.video_title,
+  {%- if title != blank -%}
+    {% render 'heading' 
+     with title: title,
      title_tag: 'h2',
      class: 'video',
      animations_reveal_on_scroll: settings.animations_reveal_on_scroll %}

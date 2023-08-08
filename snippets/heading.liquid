@@ -1,15 +1,16 @@
 {%- comment -%}
-  It creates a style tag and it restricts an image from growing larger than its max resolution.
-
+  Renders facets (filtering and sorting)
 
   Accepts:
-  - title: text
-  - title_tag: h1,h2,h3,h4
-  - class:
+  - title: {String} Title
+  - title_tag: {String} Title Tag
+  - class: {String} Class name
+  - animations_reveal_on_scroll: {Boolean} Add animations
+
 
   Usage:
   In your liquid template file, copy the following line
-  - {% include 'responsive-image' with image: featured_image, image_class: "css-class", wrapper_class: "wrapper-css-class", max_width: 700, max_height: 800 %}
+  {% render 'heading' with title: title, title_tag: "", class: "", animations_reveal_on_scroll %}
 {%- endcomment -%}
 <div class="heading {{ class | escape }}__heading {% if animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
   <div class="heading__container {{ class | escape}}__heading-container" container>

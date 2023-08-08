@@ -1350,7 +1350,7 @@ Font Sizes
   color: #181817;
   --page-width: rem(1880);
   --font-family-primary: Unica 77 LL, -apple-system, blinkmacsystemfont, Segoe UI, Roboto, Helvetica Neue, arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
-  --font-family-secondary: Nitti Basic, -apple-system, blinkmacsystemfont, Segoe UI, Roboto, Helvetica Neue, arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  --font-family-secondary: Nitti Basic Light, -apple-system, blinkmacsystemfont, Segoe UI, Roboto, Helvetica Neue, arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
   --color-canvas-primary: #F3F3EF;
   --color-canvas-inverted: #434139;
   --color-border-primary: #181817;
@@ -1776,10 +1776,6 @@ video {
 /*
 Ensure the default browser behavior of the `hidden` attribute.
 */
-[hidden] {
-  display: none;
-}
-
 /* base-details-summary */
 summary {
   cursor: pointer;
@@ -1847,10 +1843,6 @@ html.no-js .no-js-hidden {
   margin: 0;
   padding: 0;
   list-style: none;
-}
-
-.hidden {
-  display: none !important;
 }
 
 .visually-hidden {
@@ -2197,6 +2189,37 @@ a:not([href]) {
 
 .visibility-hidden {
   visibility: hidden;
+}
+
+.hidden,
+[hidden],
+.hide,
+[hide] {
+  display: none !important;
+}
+
+@media (max-width: 1024px) {
+  .desktop-hide {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .desktopup-hide {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .tablet-hide {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .tabletup-hide {
+    display: none !important;
+  }
 }
 
 @media (prefers-reduced-motion) {
@@ -3128,149 +3151,6 @@ details[open] > .share-button__fallback {
 }
 
 /* component-form */
-/* component-quantity */
-.quantity {
-  color: rgba(var(--color-foreground));
-  position: relative;
-  width: calc(14rem / var(--font-body-scale) + var(--inputs-border-width) * 2);
-  display: flex;
-  border-radius: var(--inputs-radius);
-  min-height: calc(var(--inputs-border-width) * 2 + 4.5rem);
-}
-
-.quantity:after {
-  pointer-events: none;
-  content: "";
-  position: absolute;
-  top: var(--inputs-border-width);
-  right: var(--inputs-border-width);
-  bottom: var(--inputs-border-width);
-  left: var(--inputs-border-width);
-  border: 0.1rem solid transparent;
-  border-radius: var(--inputs-radius);
-  box-shadow: 0 0 0 var(--inputs-border-width) rgba(var(--color-foreground), var(--inputs-border-opacity));
-  transition: box-shadow var(--duration-short) ease;
-  z-index: 1;
-}
-
-.quantity:before {
-  background: rgb(var(--color-background));
-  pointer-events: none;
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: var(--inputs-radius-outset);
-  box-shadow: var(--inputs-shadow-horizontal-offset) var(--inputs-shadow-vertical-offset) var(--inputs-shadow-blur-radius) rgba(var(--color-shadow), var(--inputs-shadow-opacity));
-  z-index: -1;
-}
-
-.quantity__input {
-  color: currentColor;
-  font-size: 1.4rem;
-  font-weight: 500;
-  opacity: 0.85;
-  text-align: center;
-  background-color: transparent;
-  border: 0;
-  padding: 0 0.5rem;
-  width: 100%;
-  flex-grow: 1;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-       appearance: none;
-}
-
-.quantity__button {
-  width: calc(4.5rem / var(--font-body-scale));
-  flex-shrink: 0;
-  font-size: 1.8rem;
-  border: 0;
-  background-color: transparent;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgb(var(--color-foreground));
-  padding: 0;
-}
-
-.quantity__button:first-child {
-  margin-left: calc(var(--inputs-border-width));
-}
-
-.quantity__button:last-child {
-  margin-right: calc(var(--inputs-border-width));
-}
-
-.quantity__button svg {
-  width: 1rem;
-  pointer-events: none;
-}
-
-.quantity__button:focus-visible,
-.quantity__input:focus-visible {
-  background-color: rgb(var(--color-background));
-  z-index: 2;
-}
-
-.quantity__button:focus,
-.quantity__input:focus {
-  background-color: rgb(var(--color-background));
-  z-index: 2;
-}
-
-.quantity__button:not(:focus-visible):not(.focused),
-.quantity__input:not(:focus-visible):not(.focused) {
-  box-shadow: inherit;
-  background-color: inherit;
-}
-
-.quantity__input:-webkit-autofill,
-.quantity__input:-webkit-autofill:hover,
-.quantity__input:-webkit-autofill:active {
-  box-shadow: 0 0 0 10rem rgb(var(--color-background)) inset !important;
-  -webkit-box-shadow: 0 0 0 10rem rgb(var(--color-background)) inset !important;
-}
-
-.quantity__input::-webkit-outer-spin-button,
-.quantity__input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.quantity__input[type=number] {
-  -moz-appearance: textfield;
-}
-
-.quantity__rules {
-  margin-top: 1.2rem;
-  position: relative;
-  font-size: 1.2rem;
-}
-
-.quantity__rules .caption {
-  display: inline-block;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.quantity__rules .divider + .divider::before {
-  content: "•";
-  margin: 0 0.5rem;
-}
-
-.quantity__rules-cart {
-  position: relative;
-}
-
-product-info .loading-overlay:not(.hidden) ~ *,
-.quantity__rules-cart .loading-overlay:not(.hidden) ~ * {
-  visibility: hidden;
-}
-
 /* component-modal */
 .modal__toggle {
   list-style-type: none;
@@ -4769,10 +4649,10 @@ div.imgSrc50.loaded.filtered {
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 0.8125rem;
-  line-height: 0.9375rem;
+  font-size: 0.9375rem;
+  line-height: 1.125rem;
   letter-spacing: 25;
-  font-family: "Nitti Basic", " sans-serif";
+  font-family: "Nitti Basic Light", " sans-serif";
   font-style: normal;
   font-weight: 400;
   text-transform: none;
@@ -5011,61 +4891,6 @@ button.hamburger span:nth-of-type(3) {
   transform: translate(-50%, 0) rotate(45deg);
 }
 
-form {
-  width: 100%;
-  max-width: 100%;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 0.9375rem;
-  line-height: 0.9375rem;
-  letter-spacing: -10;
-  font-family: "Nitti Basic Light", "sans-serif";
-  font-style: normal;
-  font-weight: 400;
-  text-transform: none;
-  font-weight: 100;
-  text-transform: normal;
-  border-top: 1px solid var(--color-border-primary);
-  padding-top: 2.5rem;
-}
-form input,
-form textarea {
-  display: block;
-  background-color: transparent;
-  width: 100%;
-  border: none;
-  box-shadow: none;
-  outline: none;
-  padding: 0.9375rem 0;
-}
-form input.placeholder,
-form textarea.placeholder {
-  color: var(--color-text-primary);
-}
-form input:placeholder,
-form textarea:placeholder {
-  color: var(--color-text-primary);
-}
-form input::-moz-placeholder, form textarea::-moz-placeholder {
-  color: var(--color-text-primary);
-}
-form input::placeholder,
-form textarea::placeholder {
-  color: var(--color-text-primary);
-}
-form input {
-  border-bottom: 1px solid var(--color-border-primary);
-}
-form textarea {
-  border: 1px solid var(--color-border-primary);
-  resize: none;
-}
-form .button, form input[type=submit] {
-  width: 22.5rem;
-  max-width: 100%;
-  border: 1px solid var(--color-border-primary);
-}
-
 .field {
   display: flex;
   flex-flow: column nowrap;
@@ -5183,10 +5008,10 @@ button {
   color: var(--color-border-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 0.8125rem;
-  line-height: 0.9375rem;
+  font-size: 0.9375rem;
+  line-height: 1.125rem;
   letter-spacing: 25;
-  font-family: "Nitti Basic", " sans-serif";
+  font-family: "Nitti Basic Light", " sans-serif";
   font-style: normal;
   font-weight: 400;
   text-transform: none;
@@ -5578,10 +5403,10 @@ Responsive Videos
   vertical-align: top;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 0.8125rem;
-  line-height: 0.9375rem;
+  font-size: 0.9375rem;
+  line-height: 1.125rem;
   letter-spacing: 25;
-  font-family: "Nitti Basic", " sans-serif";
+  font-family: "Nitti Basic Light", " sans-serif";
   font-style: normal;
   font-weight: 400;
   text-transform: none;
@@ -6158,10 +5983,10 @@ Responsive Videos
 .article-card__date {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 0.8125rem;
-  line-height: 0.9375rem;
+  font-size: 0.9375rem;
+  line-height: 1.125rem;
   letter-spacing: 25;
-  font-family: "Nitti Basic", " sans-serif";
+  font-family: "Nitti Basic Light", " sans-serif";
   font-style: normal;
   font-weight: 400;
   text-transform: none;
@@ -6174,10 +5999,10 @@ Responsive Videos
 .article-card__title {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 0.8125rem;
-  line-height: 0.9375rem;
+  font-size: 0.9375rem;
+  line-height: 1.125rem;
   letter-spacing: 25;
-  font-family: "Nitti Basic", " sans-serif";
+  font-family: "Nitti Basic Light", " sans-serif";
   font-style: normal;
   font-weight: 400;
   text-transform: none;
@@ -6669,12 +6494,92 @@ slider-component.slider-component-full-width {
   text-transform: uppercase;
 }
 
+.card-product {
+  margin-bottom: 2.8125rem;
+}
+.card-product__img-container {
+  margin-bottom: 0.9375rem;
+  display: block;
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 129.0909090909%;
+  position: relative;
+}
+.card-product__img-container img {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 50% 50%;
+     object-position: 50% 50%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+}
+.card-product__txt-container {
+  display: block;
+  position: relative;
+}
+.card-product__txt-container::before {
+  background: #000;
+  /* adjust this to move up and down. you may have to adjust the line height of the paragraph if you move it down a lot. */
+  bottom: -6px;
+  content: "";
+  height: 1px;
+  left: 0;
+  /****** 
+  optional values below 
+  ******/
+  /* center - (optional) use with adjusting width   */
+  margin: 0 auto;
+  position: absolute;
+  /* optional animation */
+  transition: all 0.5s ease-in-out;
+  width: 0;
+}
+.card-product__txt-inner-container {
+  display: flex;
+  flex-flow: row nowrap;
+  flex-grow: 0;
+  flex-shrink: 0;
+  justify-content: space-between;
+}
+.card-product:hover .card-product__txt-container {
+  display: block;
+  position: relative;
+}
+.card-product:hover .card-product__txt-container::before {
+  background: #000;
+  /* adjust this to move up and down. you may have to adjust the line height of the paragraph if you move it down a lot. */
+  bottom: -6px;
+  content: "";
+  height: 1px;
+  left: 0;
+  /****** 
+  optional values below 
+  ******/
+  /* center - (optional) use with adjusting width   */
+  margin: 0 auto;
+  position: absolute;
+  /* optional animation */
+  transition: all 0.5s ease-in-out;
+  width: 100%;
+}
+
 /* --------------------------------------------------------------------------
   Sections
 ----------------------------------------------------------------------------- */
 .side-navigation__navigation {
   position: fixed;
   z-index: 100;
+  transform: translate(0, 6.25rem);
+}
+@media (max-width: 768px) {
+  .side-navigation__navigation {
+    display: none;
+  }
 }
 .side-navigation__menu {
   list-style-type: none;
@@ -6744,10 +6649,10 @@ slider-component.slider-component-full-width {
 .video-section__label p em {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 0.8125rem;
-  line-height: 0.9375rem;
+  font-size: 0.9375rem;
+  line-height: 1.125rem;
   letter-spacing: 25;
-  font-family: "Nitti Basic", " sans-serif";
+  font-family: "Nitti Basic Light", " sans-serif";
   font-style: normal;
   font-weight: 400;
   text-transform: none;
@@ -6881,8 +6786,10 @@ slider-component.slider-component-full-width {
   gap: 1%;
   gap: 1%;
 }
-.featured-collection__product-group:nth-of-type(2) {
-  flex-direction: row-reverse;
+@media (min-width: 768px) {
+  .featured-collection__product-group:nth-of-type(2) {
+    flex-direction: row-reverse;
+  }
 }
 .featured-collection__product-group .featured-collection__item {
   flex: 0 0 25%;
@@ -6892,78 +6799,20 @@ slider-component.slider-component-full-width {
     flex: 0 0 100%;
   }
 }
+@media (max-width: 768px) {
+  .featured-collection__product-group .featured-collection__item {
+    max-width: 85%;
+  }
+}
 .featured-collection__product-group .featured-collection__item:nth-of-type(2) {
   max-width: 20%;
 }
-.featured-collection__img-container {
-  margin-bottom: 0.9375rem;
-  display: block;
-  height: 0;
-  overflow: hidden;
-  padding-bottom: 129.0909090909%;
-  position: relative;
-}
-.featured-collection__img-container img {
-  bottom: 0;
-  height: 100%;
-  left: 0;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: 50% 50%;
-     object-position: 50% 50%;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 100%;
-}
-.featured-collection__txt-container {
-  display: block;
-  position: relative;
-}
-.featured-collection__txt-container::before {
-  background: #000;
-  /* adjust this to move up and down. you may have to adjust the line height of the paragraph if you move it down a lot. */
-  bottom: -6px;
-  content: "";
-  height: 1px;
-  left: 0;
-  /****** 
-  optional values below 
-  ******/
-  /* center - (optional) use with adjusting width   */
-  margin: 0 auto;
-  position: absolute;
-  /* optional animation */
-  transition: all 0.5s ease-in-out;
-  width: 0;
-}
-.featured-collection__txt-inner-container {
-  display: flex;
-  flex-flow: row nowrap;
-  flex-grow: 0;
-  flex-shrink: 0;
-  justify-content: space-between;
-}
-.featured-collection__item:hover .featured-collection__txt-container {
-  display: block;
-  position: relative;
-}
-.featured-collection__item:hover .featured-collection__txt-container::before {
-  background: #000;
-  /* adjust this to move up and down. you may have to adjust the line height of the paragraph if you move it down a lot. */
-  bottom: -6px;
-  content: "";
-  height: 1px;
-  left: 0;
-  /****** 
-  optional values below 
-  ******/
-  /* center - (optional) use with adjusting width   */
-  margin: 0 auto;
-  position: absolute;
-  /* optional animation */
-  transition: all 0.5s ease-in-out;
-  width: 100%;
+@media (max-width: 768px) {
+  .featured-collection__product-group .featured-collection__item:nth-of-type(2) {
+    max-width: 55%;
+    margin-right: 0;
+    margin-left: auto;
+  }
 }
 
 .featured-blog {
@@ -7023,10 +6872,10 @@ slider-component.slider-component-full-width {
 .contact__heading-container h2 {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 0.8125rem;
-  line-height: 0.9375rem;
+  font-size: 0.9375rem;
+  line-height: 1.125rem;
   letter-spacing: 25;
-  font-family: "Nitti Basic", " sans-serif";
+  font-family: "Nitti Basic Light", " sans-serif";
   font-style: normal;
   font-weight: 400;
   text-transform: none;
@@ -7049,20 +6898,85 @@ slider-component.slider-component-full-width {
   margin-bottom: 3.125rem;
   text-transform: uppercase;
 }
+.contact form {
+  width: 100%;
+  max-width: 100%;
+  border-top: 1px solid var(--color-border-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1.125rem;
+  line-height: 1.25rem;
+  letter-spacing: -10;
+  font-family: "Nitti Basic Light", "sans-serif";
+  font-style: normal;
+  font-weight: 400;
+  text-transform: none;
+  font-weight: 100;
+  text-transform: normal;
+  padding-top: 2.5rem;
+}
+.contact form input,
+.contact form textarea {
+  display: block;
+  background-color: transparent;
+  width: 100%;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  padding: 0.9375rem 0;
+}
+.contact form input.placeholder,
+.contact form textarea.placeholder {
+  color: var(--color-text-primary);
+}
+.contact form input:placeholder,
+.contact form textarea:placeholder {
+  color: var(--color-text-primary);
+}
+.contact form input::-moz-placeholder, .contact form textarea::-moz-placeholder {
+  color: var(--color-text-primary);
+}
+.contact form input::placeholder,
+.contact form textarea::placeholder {
+  color: var(--color-text-primary);
+}
+.contact form input {
+  border-bottom: 1px solid var(--color-border-primary);
+}
+.contact form textarea {
+  border: 1px solid var(--color-border-primary);
+  resize: none;
+}
+.contact form .button,
+.contact form input[type=submit] {
+  width: 22.5rem;
+  max-width: 100%;
+  border: 1px solid var(--color-border-primary);
+}
 
 .product {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   flex-grow: 0;
   flex-shrink: 0;
-  gap: 3.125rem;
-  gap: 3.125rem;
-  max-width: 100%;
+  justify-content: space-between;
+  padding: 6.25rem 0 6.25rem 7%;
+}
+@media (max-width: 768px) {
+  .product {
+    padding: 1.5625rem 0 3.125rem;
+  }
 }
 .product__grid-item {
   flex-shrink: 1;
-  flex-basis: 50%;
-  max-width: 50%;
+  flex-basis: 48%;
+  max-width: 48%;
+}
+@media (max-width: 768px) {
+  .product__grid-item {
+    max-width: 100%;
+    flex-basis: 100%;
+  }
 }
 .product__heading {
   display: flex;
@@ -7073,7 +6987,7 @@ slider-component.slider-component-full-width {
   align-items: baseline;
   border-bottom: 1px solid var(--color-border-primary);
   padding-bottom: 0.9375rem;
-  margin-bottom: 0.9375rem;
+  margin-bottom: 1.25rem;
 }
 .product__title {
   word-break: break-word;
@@ -7135,4 +7049,185 @@ slider-component.slider-component-full-width {
 .product .price__container::after {
   content: ")";
   margin-left: 0.5rem;
+}
+.product__description {
+  margin-bottom: 1.25rem;
+}
+.product__text-with-label {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 0.9375rem;
+  line-height: 1.125rem;
+  letter-spacing: 25;
+  font-family: "Nitti Basic Light", " sans-serif";
+  font-style: normal;
+  font-weight: 400;
+  text-transform: none;
+  font-weight: 100;
+  text-transform: normal;
+  margin-bottom: 1.25rem;
+}
+
+.product-form__buttons {
+  padding-top: 1.25rem;
+}
+.product-form__submit {
+  width: 100%;
+}
+.product-form__submit:hover, .product-form__submit:focus, .product-form__submit:active {
+  background-color: white;
+}
+
+/* component-quantity */
+.quantity {
+  color: rgba(var(--color-foreground));
+  position: relative;
+  width: calc(14rem / var(--font-body-scale) + var(--inputs-border-width) * 2);
+  display: flex;
+  border-radius: var(--inputs-radius);
+  min-height: calc(var(--inputs-border-width) * 2 + 4.5rem);
+}
+.quantity__container {
+  display: flex;
+  flex-flow: row nowrap;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.quantity__label {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 0.9375rem;
+  line-height: 1.125rem;
+  letter-spacing: 25;
+  font-family: "Nitti Basic Light", " sans-serif";
+  font-style: normal;
+  font-weight: 400;
+  text-transform: none;
+  font-weight: 100;
+  text-transform: normal;
+  margin-right: 1.875rem;
+}
+.quantity:after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  top: var(--inputs-border-width);
+  right: var(--inputs-border-width);
+  bottom: var(--inputs-border-width);
+  left: var(--inputs-border-width);
+  border: 0.1rem solid transparent;
+  border-radius: var(--inputs-radius);
+  box-shadow: 0 0 0 var(--inputs-border-width) rgba(var(--color-foreground), var(--inputs-border-opacity));
+  transition: box-shadow var(--duration-short) ease;
+  z-index: 1;
+}
+.quantity__input {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1.125rem;
+  line-height: 1.25rem;
+  letter-spacing: -10;
+  font-family: "Nitti Basic Light", "sans-serif";
+  font-style: normal;
+  font-weight: 400;
+  text-transform: none;
+  font-weight: 100;
+  text-transform: normal;
+  opacity: 0.85;
+  text-align: center;
+  background-color: transparent;
+  border: 0;
+  padding: 0 0.5rem;
+  width: 100%;
+  flex-grow: 1;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  max-width: 2rem;
+}
+.quantity__button {
+  flex-shrink: 0;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1.125rem;
+  line-height: 1.25rem;
+  letter-spacing: -10;
+  font-family: "Nitti Basic Light", "sans-serif";
+  font-style: normal;
+  font-weight: 400;
+  text-transform: none;
+  font-weight: 100;
+  text-transform: normal;
+}
+.quantity__button svg {
+  width: 1rem;
+  pointer-events: none;
+}
+.quantity__button:first-child {
+  margin-left: calc(var(--inputs-border-width));
+}
+.quantity__button:last-child {
+  margin-right: calc(var(--inputs-border-width));
+}
+.quantity__button:focus-visible, .quantity__input:focus-visible {
+  background-color: rgb(var(--color-background));
+  z-index: 2;
+}
+.quantity__button:focus, .quantity__input:focus {
+  background-color: rgb(var(--color-background));
+  z-index: 2;
+}
+.quantity__button:not(:focus-visible):not(.focused), .quantity__input:not(:focus-visible):not(.focused) {
+  box-shadow: inherit;
+  background-color: inherit;
+}
+.quantity__input:-webkit-autofill, .quantity__input:-webkit-autofill:hover, .quantity__input:-webkit-autofill:active {
+  box-shadow: 0 0 0 10rem rgb(var(--color-background)) inset !important;
+  -webkit-box-shadow: 0 0 0 10rem rgb(var(--color-background)) inset !important;
+}
+.quantity__input::-webkit-outer-spin-button, .quantity__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.quantity__input[type=number] {
+  -moz-appearance: textfield;
+}
+.quantity__rules {
+  margin-top: 1.2rem;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 0.9375rem;
+  line-height: 1.125rem;
+  letter-spacing: 25;
+  font-family: "Nitti Basic Light", " sans-serif";
+  font-style: normal;
+  font-weight: 400;
+  text-transform: none;
+  font-weight: 100;
+  text-transform: normal;
+}
+.quantity__rules .caption {
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.quantity__rules .divider + .divider::before {
+  content: "•";
+  margin: 0 0.5rem;
+}
+.quantity__rules-cart {
+  position: relative;
+}
+
+product-info .loading-overlay:not(.hidden) ~ *,
+.quantity__rules-cart .loading-overlay:not(.hidden) ~ * {
+  visibility: hidden;
 }
