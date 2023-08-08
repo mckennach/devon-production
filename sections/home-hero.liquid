@@ -1,0 +1,27 @@
+{% schema %}
+  {
+    "name": "Home Hero",
+    "tag": "section",
+    "class": "section",
+    "enabled_on": {
+      "templates": ["index"]
+    },
+    "settings": [
+      {
+        "type": "collection",
+        "id": "featured_collection",
+        "label": "Featured Collection"
+      }, {
+        "type": "image_picker",
+        "id": "featured_img",
+        "label": "Featured Image",
+        "info": "Will display with text beneath"
+      }, {
+        "type": "inline_richtext",
+        "id": "featured_img_caption",
+        "label": "Image Caption",
+        "info": "Use &nbsp; for spaces. Use italics for Nitti Font"
+      }
+    ]
+  }
+{% endschema %}
