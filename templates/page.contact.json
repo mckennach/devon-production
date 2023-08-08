@@ -18,6 +18,7 @@
       "type": "contact-form",
       "settings": {
         "heading": "If you need assistance with an order or have a question about an item in our marketplace, please visit our FAQs. For all other inquiries or comments, enter your details beside and we’ll be happy to get back to you.",
+        "form_title": "How can we help you?",
         "color_scheme": "background-1"
       }
     }
