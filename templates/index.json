@@ -1,8 +1,17 @@
 {
   "sections": {
+    "031bb76c-fb5d-422f-a0e4-21199d80419c": {
+      "type": "home-hero",
+      "settings": {
+        "featured_collection": "frontpage",
+        "featured_img": "shopify:\/\/shop_images\/home.jpg",
+        "featured_img_caption": "Artisanal home objects,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inspired&nbsp;&nbsp;&nbsp;&nbsp;by&nbsp;&nbsp;&nbsp;&nbsp;life in&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Barcelona."
+      }
+    },
     "89a89aff-387f-481a-88df-b9d4e059a70f": {
       "type": "video",
       "settings": {
+        "video_title": "",
         "video_label": "<p>Artisanal home objects       <strong> <\/strong>thoughtfully designed       by Devon Liedtke     to         move  within your space,      and along with               you.<\/p><p><em>Our story here ipsum dolor amet set dolor lorem ipsum amen Title lorem ipsum dolor amet set dolor lorem ipsum amen.<\/em><\/p><p><em>Our story here ipsum dolor amet set dolor lorem ipsum amen Title lorem ipsum dolor amet set dolor lorem ipsum amen.<\/em><\/p>",
         "link": "shopify:\/\/collections\/frontpage",
         "link_label": "Shop the Collection",
@@ -39,6 +48,7 @@
     }
   },
   "order": [
+    "031bb76c-fb5d-422f-a0e4-21199d80419c",
     "89a89aff-387f-481a-88df-b9d4e059a70f",
     "7d4e0139-da51-4404-b40d-dd4e182e3b00",
     "beb178d4-0523-42fa-aa4b-bf29c02c2a05"
