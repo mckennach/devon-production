@@ -14,7 +14,35 @@
     },
     "product-grid": {
       "type": "main-collection-product-grid",
+      "blocks": {
+        "e533dac9-14fc-48cb-9df1-19e5a97f6afa": {
+          "type": "look",
+          "settings": {
+            "title": "Shop      the             look",
+            "collection": "look-1"
+          }
+        },
+        "e569505e-e020-451b-ba96-3322f68d0ac6": {
+          "type": "video",
+          "settings": {
+            "video_title": "",
+            "video_label": "",
+            "link": "shopify:\/\/collections\/vessels",
+            "link_label": "Shop Vessels",
+            "enable_video_looping": true,
+            "enable_video_autoplay": true,
+            "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "cover_image": "shopify:\/\/shop_images\/Rectangle_177.jpg",
+            "description": ""
+          }
+        }
+      },
+      "block_order": [
+        "e533dac9-14fc-48cb-9df1-19e5a97f6afa",
+        "e569505e-e020-451b-ba96-3322f68d0ac6"
+      ],
       "settings": {
+        "custom_title_all": ""
       }
     }
   },
