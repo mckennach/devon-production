@@ -1,8 +1,13 @@
-<header role="banner">
-  <div class="container">
-    <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+<header
+  role="banner">
+  <div
+    class="container">
+    <a
+      href="{{ routes.root_url }}"
+      class="header__heading-link link link--text focus-inset">
       {%- if settings.logo != blank -%}
-        <div class="header__heading-logo-wrapper">
+        <div
+          class="header__heading-logo-wrapper">
           {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
           {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
           {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
@@ -18,7 +23,8 @@
            preload: true }}
         </div>
       {%- else -%}
-        <span class="h2">{{ shop.name }}</span>
+        <span
+          class="h2">{{ shop.name }}</span>
       {%- endif -%}
     </a>
   </div>
@@ -34,7 +40,15 @@
         "id": "menu",
         "default": "main-menu",
         "label": "t:sections.header.settings.menu.label"
-      }, {
+      },
+      {
+        "type": "image_picker",
+        "id": "secondary_logo",
+        "label": "Secondary Logo",
+        "info": "Will replace logo on Edit (Blog) Pages"
+
+      },
+      {
         "type": "select",
         "id": "sticky_header_type",
         "options": [
@@ -51,7 +65,8 @@
         ],
         "default": "on-scroll-up",
         "label": "Sticky Navigation"
-      }, {
+      },
+      {
         "type": "header",
         "content": "Link Bottom Margin"
       }, {
