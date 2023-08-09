@@ -7,7 +7,7 @@
   endif
 -%}
 
-<div class="featured-blog color-{{ section.settings.color_scheme }} gradient{% if section.settings.heading == blank %} no-heading{% endif %}">
+<div class="featured-blog {% if section.settings.heading == blank %} no-heading{% endif %}" data-scheme="{{ section.settings.color_scheme }}">
   <div class="featured-blog__container">
 
     {%- unless section.settings.heading == blank -%}

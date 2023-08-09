@@ -107,7 +107,8 @@
 
         {% if forloop.index == 1 -%}
           : root, {%- endif %}
-        .color-{{ scheme.id }}{
+        .color-{{ scheme.id }},
+        [data-theme="color-{{ scheme.id }}"] {
           --color-background: {{ scheme.settings.background.red }}
           , {{ scheme.settings.background.green }}
           , {{ scheme.settings.background.blue }}
@@ -163,17 +164,19 @@
         }
       {% endfor %}
 
+
       {{ scheme_classes | prepend: 'body' }}
       {
+
         color: rgb(var(--color-foreground));
         /* color: var(--color-foreground); */
         background-color: rgb(var(--color-background));
         /* background-color: var(--color-background); */
+        transition: all 0.35s ease-in-out;
       }
 
       :root {
         --font-body-family: 'Unica 77 LL', sans-serif;
-
         --font-body-style: normal;
         --font-body-weight: normal;
         --font-body-weight-bold: {{ settings.type_body_font.weight | plus: 300 | at_most: 1000 }}
@@ -444,7 +447,7 @@
 
   </head>
 
-  <body class="{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
+  <body class="{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %} " data-theme=color-background-1>
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>
@@ -455,7 +458,7 @@
     {%- endif -%}
 
     {% sections 'header-group' %}
-
+    {{ scheme.settings.background.red }}
     <main
       id="MainContent"
       class="content-for-layout focus-none"

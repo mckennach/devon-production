@@ -22,7 +22,7 @@
 {%- endcapture -%}
 
 
-<div class="video-section isolate ">
+<div class="video-section isolate " data-scheme="{{ section.settings.color_scheme }}">
 
   {%- if title != blank -%}
     {% render 'heading' 
@@ -245,6 +245,12 @@
         ],
         "label": "Section Size",
         "default": "container"
+      }, {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "t:sections.all.colors.label",
+        "info": "t:sections.all.colors.has_cards_info",
+        "default": "background-1"
       }
     ],
     "presets": [
