@@ -1420,11 +1420,6 @@ html {
   /* 4 */
 }
 
-html,
-body {
-  overflow-x: hidden;
-}
-
 body {
   scroll-behavior: smooth;
   margin: 0;
@@ -4059,12 +4054,6 @@ details-disclosure > details {
   border-color: rgba(var(--color-badge-border), var(--alpha-badge-border));
   color: rgb(var(--color-badge-foreground));
   word-break: break-word;
-}
-
-.gradient {
-  background: rgb(var(--color-background));
-  background: var(--gradient-background);
-  background-attachment: fixed;
 }
 
 @media screen and (forced-colors: active) {
@@ -6908,17 +6897,6 @@ slider-component.slider-component-full-width {
   top: 0;
   width: 1px;
   background-color: rgb(var(--color-foreground));
-}
-.featured-blog__title-container [container-md]::before {
-  content: "";
-  position: absolute;
-  right: 10%;
-  height: 100%;
-  height: 14%;
-  z-index: 1;
-  top: 0;
-  width: 1px;
-  background-color: rgb(var(--color-background));
 }
 .featured-blog__title {
   margin-bottom: 1.25rem;
