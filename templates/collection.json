@@ -14,21 +14,35 @@
     },
     "product-grid": {
       "type": "main-collection-product-grid",
+      "blocks": {
+        "d5dd1a41-a4d8-49fd-b91b-b39d4d068b16": {
+          "type": "look",
+          "settings": {
+            "title": "Shop      the             look",
+            "collection": "look-1"
+          }
+        },
+        "dfa52442-dd9f-411c-b725-e32bcdba1a56": {
+          "type": "video",
+          "settings": {
+            "video_title": "",
+            "video_label": "",
+            "link": "shopify:\/\/collections\/vessels",
+            "link_label": "Shop Vessels    >",
+            "enable_video_looping": false,
+            "enable_video_autoplay": true,
+            "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "cover_image": "shopify:\/\/shop_images\/Rectangle_177.jpg",
+            "description": ""
+          }
+        }
+      },
+      "block_order": [
+        "d5dd1a41-a4d8-49fd-b91b-b39d4d068b16",
+        "dfa52442-dd9f-411c-b725-e32bcdba1a56"
+      ],
       "settings": {
-        "products_per_page": 16,
-        "columns_desktop": 4,
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": false,
-        "enable_quick_add": false,
-        "enable_filtering": true,
-        "filter_type": "horizontal",
-        "enable_sorting": true,
-        "columns_mobile": "2",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "custom_title_all": ""
       }
     }
   },
