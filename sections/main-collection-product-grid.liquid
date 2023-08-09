@@ -1,32 +1,35 @@
 <div>
-  <div
-    class="featured-collection__container container">
-    <div
+  <div class="featured-collection__container container">
+
+    {% comment %} {%- for block in section.blocks -%}
+      {%- case block.type -%}
+      {%- when 'look' -%}
+
+      {{ block.settings.title }}
+      {%- when 'video' -%}
+
+      {% render 'video' with 
+      video: block.settings.video,
+      video_url: block.settings.video_url,
+      video_label: block.settings.video_label,
+      link: block.settings.link,
+      link_label: block.settings.link_label,
+      animations_reveal_on_scroll: true,
+      enable_video_autoplay: block.settings.enable_video_autoplay,
+      enable_video_looping: block.settings.enable_video_looping,
+      cover_image: block.settings.cover_image %}
+      {%- endcase -%}
+    {%- endfor -%} {% endcomment %}
+
+    {% comment %} {{ section.blocks[0].type }} {% endcomment %}
+    {% liquid
+      assign count = 0
+    %}
+      <div
       class="featured-collection__collection">
       <div
         class="featured-collection__collection-list">
-
-        {%- if collection.handle == 'all' -%}
-          {%- for block in section.blocks -%}
-            {%- case block.type -%}
-              {%- when 'look' -%}
-              here
-              {% comment %} {{ block.settings.title }} {% endcomment %}
-              {%- when 'video' -%}
-              hello
-              {% comment %} {% render 'video' with 
-                video: block.settings.video,
-                video_url: block.settings.video_url,
-                video_label: block.settings.video_label,
-                link: block.settings.link,
-                link_label: block.settings.link_label,
-                animations_reveal_on_scroll: true,
-                enable_video_autoplay: block.settings.enable_video_autoplay,
-                enable_video_looping: block.settings.enable_video_looping,
-              cover_image: block.settings.cover_image %} {% endcomment %}
-            {%- endcase -%}
-          {%- endfor -%}
-        {%- endif -%}
+        {%- if collection.handle == 'all' -%}{%- endif -%}
         {%- for product in collection.products -%}
           {% liquid
               assign group_size = 2

@@ -14,11 +14,13 @@
   {% render 'heading' with title: title, title_tag: "", class: "", animations_reveal_on_scroll, %}
 {%- endcomment -%}
 
+
 {% liquid
     assign video_id = video.id | default: video_url.id
     assign video_alt = video.alt | default: description
     assign alt = 'sections.video.load_video' | t: description: video_alt | escape
     assign poster = video.preview_image | default: cover_image
+
     if video != null
         assign ratio_diff = video.aspect_ratio | minus: poster.aspect_ratio | abs
         if ratio_diff < 0.01 and ratio_diff > 0
@@ -26,6 +28,7 @@
         endif
     endif
 %}
+
 <noscript>
   <div
     class="video-section__media"
