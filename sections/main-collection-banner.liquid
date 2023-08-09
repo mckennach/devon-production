@@ -2,14 +2,19 @@
 {% liquid
   assign title = collection.title | escape
   assign shop_title = title | prepend: 'Shop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+  assign filters = collection.filters
 %}
+
 
 <div>
   {% render 'heading' 
    with title: shop_title,
-   title_tag: 'h2',
+   title_tag: 'h1',
    class: 'video',
-   animations_reveal_on_scroll: settings.animations_reveal_on_scroll %}
+   animations_reveal_on_scroll: settings.animations_reveal_on_scroll,
+   enable_filter: true,
+   filters: filters,
+   results: collection %}
 </div>
 
 
@@ -21,6 +26,20 @@
       {
         "type": "paragraph",
         "content": "t:sections.main-collection-banner.settings.paragraph.content"
+      },
+      {
+        "type": "header",
+        "content": "Filter"
+      },
+      {
+        "type": "collection_list",
+        "id": "filters",
+        "label": "Collection Filters"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_filter",
+        "label": "Enable Filter"
       }, {
         "type": "color_scheme",
         "id": "color_scheme",
