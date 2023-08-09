@@ -6641,6 +6641,34 @@ slider-component.slider-component-full-width {
   padding-left: 0.625rem;
 }
 
+.footer__grid {
+  display: flex;
+  flex-flow: row nowrap;
+  flex-grow: 0;
+  flex-shrink: 0;
+  justify-content: space-between;
+}
+.footer__grid-item {
+  max-width: 100%;
+}
+@media (min-width: 768px) {
+  .footer__grid-item {
+    flex: 1 1 0;
+    max-width: 100%;
+  }
+}
+.footer__content {
+  display: flex;
+  flex-flow: column nowrap;
+  flex-grow: 0;
+  flex-shrink: 0;
+  justify-content: space-between;
+}
+.footer__submark-container {
+  margin-right: 0;
+  margin-left: auto;
+}
+
 .home-hero__grid {
   display: flex;
   flex-flow: row nowrap;
