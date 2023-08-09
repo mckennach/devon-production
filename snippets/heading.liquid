@@ -14,20 +14,6 @@
   {% render 'heading' with title: title, title_tag: "", class: "", animations_reveal_on_scroll, %}
 {%- endcomment -%}
 
-{% liquid
-  if enable_filter
-    if results
-      assign total_active_values = 0
-      if results.url
-        assign results_url = results.url
-      else
-        assign terms = results.terms | escape
-        assign results_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last' 
-      endif
-    endif 
-  endif
-%}
-
 <div
   class="heading {{ class | escape }}__heading {% if animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
   <div
@@ -46,26 +32,41 @@
 
     {%- if enable_filter -%}
       <div
-        class="heading__filter-container {{ class | escape}}__filter-container">
-        {%- for filter in filters -%}
-          <ul>
-            {%- for value in filter.values -%}
-              {%- unless value.count == 0 -%}
-                <li
-                  id="Filter-{{ filter.param_name | escape }}-{{ forloop.index }}"
-                  class="{% if value.active %}active{% endif %}"
-                  data-name="{{ value.param_name }}"
-                  data-value="{{ value.value }}">
-                  <a
-                    href="{{ results_url }}">
-                    {{ value.label }} ( {{ value.count }} )
-                  </a>
-                </li>
-              {%- endunless -%}
+        class="heading__filter-container {{ class | escape }}__filter-container">
+        <ul
+          class="heading__filter-list {{ class | escape }}__filter-list">
+          {%- for filter in filters -%}
 
-            {%- endfor -%}
+            <li
+              id="Filter-{{ filter.id }}-{{ forloop.index }}"
+              class="heading__filter-item {{ class | escape }}__filter-item
+                                                              {% if collection.url == filter.url %} active{% endif %}">
+              <a
+                href="{{ filter.url }}">
+                {{ filter.title }} ( {{ filter.products.count }} )
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+
+        {% comment %} {%- for filter in filters -%}
+          <ul>
+          {%- for value in filter.values -%}
+          {%- unless value.count == 0 -%}
+          <li
+          id="Filter-{{ filter.param_name | escape }}-{{ forloop.index }}"
+          class="{% if value.active %}active{% endif %}"
+          data-name="{{ value.param_name }}"
+          data-value="{{ value.value }}">
+          <a
+          href="{{ results_url }}">
+          {{ value.label }} ( {{ value.count }} )
+          </a>
+          </li>
+          {%- endunless -%}
+          {%- endfor -%}
           </ul>
-        {%- endfor -%}
+        {%- endfor -%} {% endcomment %}
       </div>
     {%- endif -%}
   </div>

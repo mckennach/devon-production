@@ -22,17 +22,20 @@
 {%- endcapture -%}
 
 
-<div class="video-section isolate " data-scheme="{{ section.settings.color_scheme }}">
+<div
+  class="video-section isolate "
+  data-scheme="{{ section.settings.color_scheme }}">
 
   {%- if title != blank -%}
     {% render 'heading' 
      with title: title,
      title_tag: 'h2',
      class: 'video',
-     animations_reveal_on_scroll: settings.animations_reveal_on_scroll %}
+     animations_reveal_on_scroll: section.settings.animations_reveal_on_scroll %}
 
   {%- endif -%}
-  <div class="{{ section.settings.section_size }}">
+  <div
+    class="{{ section.settings.section_size }}">
     <noscript>
       <div
         class="video-section__media"
@@ -40,7 +43,9 @@
         style="--ratio-percent: {{ 1 | divided_by: poster.aspect_ratio | times: 100 }}%;"
         {% endif %}>
         {%- if section.settings.video == null and section.settings.video_url != null -%}
-          <a href="{{ section.settings.video_url }}" class="video-section__poster media media--transparent{% if poster == null %} video-section__placeholder{% endif %}">
+          <a
+            href="{{ section.settings.video_url }}"
+            class="video-section__poster media media--transparent{% if poster == null %} video-section__placeholder{% endif %}">
             {%- if poster != null -%}
               {{
                  poster
@@ -80,7 +85,8 @@
         {%- else -%}
           {{ 'hero-apparel-3' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
         {%- endif -%}
-        <span class="deferred-media__poster-button motion-reduce">
+        <span
+          class="deferred-media__poster-button motion-reduce">
           {%- render 'icon-play' -%}
         </span>
       </button>
@@ -125,14 +131,17 @@
       </template>
     </deferred-media>
     {%- if video_label or link -%}
-      <div class="video-section__txt-container">
+      <div
+        class="video-section__txt-container">
         {%- if video_label -%}
-          <div class="video-section__label {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+          <div
+            class="video-section__label {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
             {{ video_label }}
           </div>
         {%- endif -%}
         {% if link %}
-          <div class="video-section__link {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+          <div
+            class="video-section__link {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
             <a
               href="{{ link }}"
               class="underlined-link"

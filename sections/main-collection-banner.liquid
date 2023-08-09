@@ -2,7 +2,8 @@
 {% liquid
   assign title = collection.title | escape
   assign shop_title = title | prepend: 'Shop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
-  assign filters = collection.filters
+  assign filters = section.settings.filters
+  
 %}
 
 
@@ -11,10 +12,9 @@
    with title: shop_title,
    title_tag: 'h1',
    class: 'video',
-   animations_reveal_on_scroll: settings.animations_reveal_on_scroll,
-   enable_filter: true,
-   filters: filters,
-   results: collection %}
+   animations_reveal_on_scroll: section.settings.animations_reveal_on_scroll,
+   enable_filter: section.settings.enable_filter,
+   filters: filters %}
 </div>
 
 
