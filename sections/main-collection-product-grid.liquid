@@ -26,9 +26,9 @@
       assign count = 0
     %}
       <div
-      class="featured-collection__collection">
+      class="collection-page__collection">
       <div
-        class="featured-collection__collection-list">
+        class="collection-page__collection-list">
         {%- if collection.handle == 'all' -%}{%- endif -%}
         {%- for product in collection.products -%}
           {% liquid
@@ -41,6 +41,26 @@
           {%- if is_group == 1 -%}
             {%- unless forloop.index == 1 -%}
             </group>
+            {{ forloop.index }}
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+                {%- when 'look' -%}
+                {%- when 'video' -%}
+                <div
+                  class="collection-page__video">
+                  {% render 'video' with 
+                   video: block.settings.video,
+                   video_url: block.settings.video_url,
+                   video_label: block.settings.video_label,
+                   link: block.settings.link,
+                   link_label: block.settings.link_label,
+                   animations_reveal_on_scroll: true,
+                   enable_video_autoplay: block.settings.enable_video_autoplay,
+                   enable_video_looping: block.settings.enable_video_looping,
+                   cover_image: block.settings.cover_image %}
+                </div>
+              {%- endcase -%}
+            {%- endfor -%}
 
           {%- endunless -%}
           <group

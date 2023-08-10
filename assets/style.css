@@ -6645,6 +6645,9 @@ slider-component.slider-component-full-width {
   margin: 0;
   padding: 0;
 }
+.side-navigation .cart-count {
+  display: inline;
+}
 .side-navigation__submenu {
   padding-left: 0.625rem;
 }
