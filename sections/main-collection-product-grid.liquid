@@ -26,7 +26,7 @@
       assign count = 0
       assign look_to_skip = 0
       assign video_to_skip = 0
-      assign break_video = true
+      
     %}
       <div
       class="collection-page__collection">
@@ -40,6 +40,8 @@
                 assign group_size = 2
               endif 
               assign is_group = forloop.index | modulo: group_size
+              assign break_video = false
+              assign break_look = false
             %}
 
           {%- if is_group == 1 -%}
@@ -49,29 +51,37 @@
             {%- for block in section.blocks -%}
               {%- case block.type -%}
                 {%- when 'look' -%}
-                {%- when 'video' -%}
-
-                {{ video_to_skip }}
-                {%- unless forloop.index == video_to_skip -%}
-
-
-                  {%- assign video_to_skip = forloop.index -%}
-                  <div
-                    class="collection-page__video">
-                    {% render 'video' with 
-                     video: block.settings.video,
-                     video_url: block.settings.video_url,
-                     video_label: block.settings.video_label,
-                     link: block.settings.link,
-                     link_label: block.settings.link_label,
-                     animations_reveal_on_scroll: true,
-                     enable_video_autoplay: block.settings.enable_video_autoplay,
-                     enable_video_looping: block.settings.enable_video_looping,
-                     cover_image: block.settings.cover_image %}
-                  </div>
-                  {% break %}
+                {%- unless forloop.index == look_to_skip -%}
+                  {% unless look_to_skip > forloop.index %}
+                    {%- unless break_look -%}
+                      {%- assign look_to_skip = forloop.index -%}
+                      {%- assign break_look = true -%}
+                      {% render 'shop-the-look' with data: block.settings %}
+                    {%- endunless -%}
+                  {%- endunless -%}
                 {%- endunless -%}
-
+                {%- when 'video' -%}
+                {%- unless forloop.index == video_to_skip -%}
+                  {% unless video_to_skip > forloop.index %}
+                    {%- unless break_video -%}
+                      {%- assign video_to_skip = forloop.index -%}
+                      {%- assign break_video = true -%}
+                      <div
+                        class="collection-page__video">
+                        {% render 'video' with 
+                         video: block.settings.video,
+                         video_url: block.settings.video_url,
+                         video_label: block.settings.video_label,
+                         link: block.settings.link,
+                         link_label: block.settings.link_label,
+                         animations_reveal_on_scroll: true,
+                         enable_video_autoplay: block.settings.enable_video_autoplay,
+                         enable_video_looping: block.settings.enable_video_looping,
+                         cover_image: block.settings.cover_image %}
+                      </div>
+                    {%- endunless -%}
+                  {%- endunless -%}
+                {%- endunless -%}
               {%- endcase -%}
             {%- endfor -%}
 
