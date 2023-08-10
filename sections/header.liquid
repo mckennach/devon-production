@@ -1,26 +1,19 @@
 <header
-  role="banner">
+  role="banner"
+  class="header {% if template == 'blog' %} secondary {% else %} main {% endif %}">
   <div
-    class="container">
+    class="header__container container">
     <a
       href="{{ routes.root_url }}"
       class="header__heading-link link link--text focus-inset">
       {%- if settings.logo != blank -%}
-        <div class="header__heading-logo-wrapper">
-          {% comment %} {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
-            {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
-            {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
-            {% capture widths %}
-            {{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
-            {{ settings.logo | image_url: width: 600 | image_tag:
-            class: 'header__heading-logo motion-reduce',
-            widths: widths,
-            height: logo_height,
-            width: settings.logo_width,
-            alt: logo_alt,
-            sizes: sizes,
-          preload: true }} {% endcomment %}
-          {% render 'icon-logo' %}
+        <div
+          class="header__heading-logo-wrapper ">
+          {%- if template == 'blog' -%}
+            {% render 'icon-logo-submark' with id: 'header' %}
+          {%- else -%}
+            {% render 'icon-logo' with id: 'header' %}
+          {%- endif -%}
         </div>
       {%- else -%}
         <span
@@ -29,6 +22,7 @@
     </a>
   </div>
 </header>
+{{ template }}
 
 {% schema %}
   {
