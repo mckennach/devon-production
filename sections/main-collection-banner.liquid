@@ -7,11 +7,12 @@
 %}
 
 
-<div>
+<div
+  class="collection-page__header-container">
   {% render 'heading' 
    with title: shop_title,
    title_tag: 'h1',
-   class: 'video',
+   class: 'collection-page',
    animations_reveal_on_scroll: section.settings.animations_reveal_on_scroll,
    enable_filter: section.settings.enable_filter,
    filters: filters %}
