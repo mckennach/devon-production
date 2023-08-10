@@ -26,7 +26,7 @@
       assign count = 0
       assign look_to_skip = 0
       assign video_to_skip = 0
-      assign break_video = false
+      assign break_video = true
     %}
       <div
       class="collection-page__collection">
@@ -50,10 +50,11 @@
               {%- case block.type -%}
                 {%- when 'look' -%}
                 {%- when 'video' -%}
-                {{ break_video }}
+
+                {{ video_to_skip }}
                 {%- unless forloop.index == video_to_skip -%}
 
-                  {%- assign break_video = true -%}
+
                   {%- assign video_to_skip = forloop.index -%}
                   <div
                     class="collection-page__video">
@@ -68,6 +69,7 @@
                      enable_video_looping: block.settings.enable_video_looping,
                      cover_image: block.settings.cover_image %}
                   </div>
+                  {% break %}
                 {%- endunless -%}
 
               {%- endcase -%}
