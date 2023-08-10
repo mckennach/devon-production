@@ -7,7 +7,7 @@
     <div class="footer__grid">
       <div class="footer__content footer__grid-item">
         <nav class="footer__navigation">
-          <ul class="footer-block__details-content list-unstyled">
+          <ul class="footer__details-content list-unstyled">
               {%- for link in section.settings.nav.links -%}
                 <li>
                   <a href="{{ link.url }}" class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %}">
@@ -17,9 +17,9 @@
               {%- endfor -%}
             </ul>
         </nav>
-        <div class="footer-block__newsletter">
+        <div class="footer__newsletter">
             {%- if section.settings.newsletter_heading != blank -%}
-              <h2 class="footer-block__heading inline-richtext">{{ section.settings.newsletter_heading }}</h2>
+              <h2 class="footer__heading inline-richtext">{{ section.settings.newsletter_heading }}</h2>
             {%- endif -%}
             {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
               <input
@@ -132,7 +132,7 @@
             {% endif %}>
             {%- for block in section.blocks -%}
               <div
-                class="footer-block grid__item{% if block.type == 'link_list' %} footer-block--menu{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                class="footer grid__item{% if block.type == 'link_list' %} footer-block--menu{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
                 {{ block.shopify_attributes }}
                 {% if settings.animations_reveal_on_scroll %}
                 data-cascade
