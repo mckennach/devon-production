@@ -10,9 +10,9 @@
         <div
           class="header__heading-logo-wrapper ">
           {%- if template == 'blog' -%}
-            {% render 'icon-logo-submark' with id: 'header' %}
+            {% render 'icon-logo-submark' with id, id: 'header' %}
           {%- else -%}
-            {% render 'icon-logo' with id: 'header' %}
+            {% render 'icon-logo' with id, id: 'header' %}
           {%- endif -%}
         </div>
       {%- else -%}
@@ -80,4 +80,16 @@
       }
     ]
   }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'icon-logo-submark' with id: 'header' %}"
+  to: "{% render 'icon-logo-submark' with id, id: 'header' %}"
+  position: 416..470
+- from: "{% render 'icon-logo' with id: 'header' %}"
+  to: "{% render 'icon-logo' with id, id: 'header' %}"
+  position: 506..552
+{%- endcomment -%}

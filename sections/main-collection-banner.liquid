@@ -9,13 +9,7 @@
 
 <div
   class="collection-page__header-container">
-  {% render 'heading' 
-   with title: shop_title,
-   title_tag: 'h1',
-   class: 'collection-page',
-   animations_reveal_on_scroll: section.settings.animations_reveal_on_scroll,
-   enable_filter: section.settings.enable_filter,
-   filters: filters %}
+  {% render 'heading' with title, title: shop_title, title_tag: 'h1', class: 'collection-page', animations_reveal_on_scroll: section.settings.animations_reveal_on_scroll, enable_filter: section.settings.enable_filter, filters: filters %}
 </div>
 
 
@@ -49,4 +43,17 @@
       }
     ]
   }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'heading' \n   with title: shop_title,\n   title_tag: 'h1',\n   class:
+    'collection-page',\n   animations_reveal_on_scroll: section.settings.animations_reveal_on_scroll,\n
+    \  enable_filter: section.settings.enable_filter,\n   filters: filters %}"
+  to: "{% render 'heading' with title, title: shop_title, title_tag: 'h1', class:
+    'collection-page', animations_reveal_on_scroll: section.settings.animations_reveal_on_scroll,
+    enable_filter: section.settings.enable_filter, filters: filters %}"
+  position: 327..562
+{%- endcomment -%}

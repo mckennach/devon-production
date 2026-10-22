@@ -8,9 +8,7 @@
 {%- if collection_length > 0 -%}
   <div class="featured-collection gradient{% if section.settings.heading == blank %} no-heading{% endif %}" data-scheme="{{ section.settings.color_scheme }}">
     {%- if title -%}
-      {% render 'heading' with title: title, title_tag: 'h2'
-       , class: 'featured-collection',
-       animations_reveal_on_scroll: settings.animations_reveal_on_scroll %}
+      {% render 'heading' with title, title: title, title_tag: 'h2', class: 'featured-collection', animations_reveal_on_scroll: settings.animations_reveal_on_scroll %}
     {%- endif -%}
     <div class="featured-collection__container container">
       <div class="featured-collection__collection">
@@ -95,4 +93,17 @@
       }
     ]
   }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'heading' with title: title, title_tag: 'h2'
+           , class: 'featured-collection',
+           animations_reveal_on_scroll: settings.animations_reveal_on_scroll %}
+  to: "{% render 'heading' with title, title: title, title_tag: 'h2', class: 'featured-collection',
+    animations_reveal_on_scroll: settings.animations_reveal_on_scroll %}"
+  position: 410..571
+{%- endcomment -%}
